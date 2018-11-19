@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>callback hell | Volibear.V</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Callback Hell 这是一篇介绍callback和如何避免走进callback hell的文章。callback在JavaScript里面很常见了，不多说，比较重要的是callback hell。 相比我之前看到的解决callback hell的一些文章，都是通过使用一些’新’技术，例如Promise、Generator、Es7的async/await等，这篇就显得比较优雅了。下面进入正题">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="callback hell">
+<meta property="og:url" content="http://yoursite.com/2017/03/23/callback-hell/index.html">
+<meta property="og:site_name" content="Volibear.V">
+<meta property="og:description" content="Callback Hell 这是一篇介绍callback和如何避免走进callback hell的文章。callback在JavaScript里面很常见了，不多说，比较重要的是callback hell。 相比我之前看到的解决callback hell的一些文章，都是通过使用一些’新’技术，例如Promise、Generator、Es7的async/await等，这篇就显得比较优雅了。下面进入正题">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-16T09:46:11.826Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="callback hell">
+<meta name="twitter:description" content="Callback Hell 这是一篇介绍callback和如何避免走进callback hell的文章。callback在JavaScript里面很常见了，不多说，比较重要的是callback hell。 相比我之前看到的解决callback hell的一些文章，都是通过使用一些’新’技术，例如Promise、Generator、Es7的async/await等，这篇就显得比较优雅了。下面进入正题">
+  
+    <link rel="alternate" href="/atom.xml" title="Volibear.V" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Volibear.V</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-callback-hell" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/23/callback-hell/" class="article-date">
+  <time datetime="2017-03-23T15:51:09.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      callback hell
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://callbackhell.com/" target="_blank" rel="noopener">Callback Hell</a></p>
+<p>这是一篇介绍callback和如何避免走进callback hell的文章。<br>callback在JavaScript里面很常见了，不多说，比较重要的是callback hell。</p>
+<p>相比我之前看到的解决callback hell的一些文章，都是通过使用一些’新’技术，例如Promise、Generator、Es7的async/await等，这篇就显得比较优雅了。<br>下面进入正题：</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
+<li><p><strong>Keep your code shallow</strong></p>
+<ul>
+<li>给callback hell 中的匿名函数命名</li>
+<li>利用function hoisting的特性（即可以调用函数在定义函数字面量之前，类似<code>function a(){}</code>而不是<code>var a=function(){}</code>这种格式），把函数定义写在较下方，调用写在上面  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">document.querySelector(<span class="string">'form'</span>).onsubmit = formSubmit</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> formSubmit (submitEvent) &#123;</span><br><span class="line">  var name = document.querySelector(<span class="string">'input'</span>).value</span><br><span class="line">  request(&#123;</span><br><span class="line">    uri: <span class="string">"http://example.com/upload"</span>,</span><br><span class="line">    body: name,</span><br><span class="line">    method: <span class="string">"POST"</span></span><br><span class="line">  &#125;, postResponse)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> postResponse (err, response, body) &#123;</span><br><span class="line">  var statusMessage = document.querySelector(<span class="string">'.status'</span>)</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="built_in">return</span> statusMessage.value = err</span><br><span class="line">  statusMessage.value = body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>Modularize</strong></p>
+<ul>
+<li><p>模块化，比较通用的函数可以放在一个file里，方便其他文件调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">module.exports.submit = formSubmit</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> formSubmit (submitEvent) &#123;</span><br><span class="line">  var name = document.querySelector(<span class="string">'input'</span>).value</span><br><span class="line">  request(&#123;</span><br><span class="line">    uri: <span class="string">"http://example.com/upload"</span>,</span><br><span class="line">    body: name,</span><br><span class="line">    method: <span class="string">"POST"</span></span><br><span class="line">  &#125;, postResponse)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> postResponse (err, response, body) &#123;</span><br><span class="line">  var statusMessage = document.querySelector(<span class="string">'.status'</span>)</span><br><span class="line">  <span class="keyword">if</span> (err) <span class="built_in">return</span> statusMessage.value = err</span><br><span class="line">  statusMessage.value = body</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var formUploader = require(<span class="string">'formuploader'</span>)</span><br><span class="line">document.querySelector(<span class="string">'form'</span>).onsubmit = formUploader.submit</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>Handle every single error</strong></p>
+<ul>
+<li>处理每一个error</li>
+<li><a href="https://standardjs.com/" target="_blank" rel="noopener">standard</a>,使用这个能够展示你的代码里的未处理的error</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>大致就以上三点，其实这是一个循序渐进的过程，从callback hell-&gt;命名函数，抽象化各种操作而不是复制代码-&gt;模块化代码，复用的比较多且多个文件通用的代码可以用一个文件包含起来-&gt;npm包，多个项目通用的代码甚至可以发布npm包。<br>当然，后面也有更进阶的解决方案，也就是前面讲到的Promise,generator,async/await等，但作者说这些需要在你熟悉callback这一在JavaScript编程常见的事物之后，才能用得好，<strong>他说他自己不觉得使不使用这些东西与直接写相比有很大区别</strong>。<br>感觉这讲的不是代码之术，而是<strong>代码之道！！！</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/23/callback-hell/" data-id="cjoo060rc0004c7rsftkrnqvt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/31/flex-layout/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          flex layout
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/23/commuication-between-browser-and-server/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">commuication between browser and server</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/前端开发/" style="font-size: 16.67px;">前端开发</a> <a href="/tags/小程序/" style="font-size: 13.33px;">小程序</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/网络基础/" style="font-size: 13.33px;">网络基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/">解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/11/beijiang/">course</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/17/canvas-article/">canvas-article</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Volibear.V<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

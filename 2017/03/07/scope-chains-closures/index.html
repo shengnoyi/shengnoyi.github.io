@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>scope-chains-closures | Volibear.V</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The javascript runtime follows these steps to assign a variable:  1) Search within the current scope. 2) If not found, search in the immediately outer scope. 3) If found, go to 6. 4) If not found, rep">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scope-chains-closures">
+<meta property="og:url" content="http://yoursite.com/2017/03/07/scope-chains-closures/index.html">
+<meta property="og:site_name" content="Volibear.V">
+<meta property="og:description" content="The javascript runtime follows these steps to assign a variable:  1) Search within the current scope. 2) If not found, search in the immediately outer scope. 3) If found, go to 6. 4) If not found, rep">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-16T09:46:11.830Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scope-chains-closures">
+<meta name="twitter:description" content="The javascript runtime follows these steps to assign a variable:  1) Search within the current scope. 2) If not found, search in the immediately outer scope. 3) If found, go to 6. 4) If not found, rep">
+  
+    <link rel="alternate" href="/atom.xml" title="Volibear.V" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Volibear.V</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-scope-chains-closures" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/07/scope-chains-closures/" class="article-date">
+  <time datetime="2017-03-07T01:59:50.000Z" itemprop="datePublished">2017-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      scope-chains-closures
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The javascript runtime follows these steps to <strong>assign a variable</strong>:</p>
+<p> 1) Search within the current scope.<br> 2) If not found, search in the immediately outer scope.<br> 3) If found, go to 6.<br> 4) If not found, repeat 2. Until the Global Scope is reached.<br> 5) If not found in Global Scope, create it (on window / global objects).<br> 6) Assign the value.  </p>
+<h3 id="Garbage-Collection-Mark-amp-Sweep"><a href="#Garbage-Collection-Mark-amp-Sweep" class="headerlink" title="Garbage Collection:Mark &amp; Sweep"></a>Garbage Collection:<em>Mark &amp; Sweep</em></h3><p>Memory in Javascript is managed automatically by the runtime. The runtime<br>decides when/if to release any allocated memory. This decision process is called<br>Garbage Collection.</p>
+<p>Every javascript runtime has their own algorithm for garbage collection, but<br>most use a variation of Mark &amp; Sweep. The Mark &amp; Sweep algorithm works by<br>marking references to memory (variables, functions, etc) which are still<br>reachable from active code. Any reference which is not marked, is swept into<br>the garbage (i.e. the memory is freed).</p>
+<p>This concept of marking reachable memory is particulary relevant to closures:</p>
+<pre><code> someFunc()
+  var bar
+return inner
+     ↑
+     |
+  inner()
+ alert(bar)
+     ↑
+     ⋮
+</code></pre><p><strong>When the closure inner() is returned from someFunc(), it maintains its<br>reference to bar. The Mark &amp; Sweep algorithm will mark bar as reachable, and<br>hence will not garbage collect it.</strong></p>
+<p><strong>For inner() to correctly resolve its reference to bar, not only does the<br>memory for bar need to be kept, but the scope chain which describes how to<br>reach bar must also be kept.</strong></p>
+<p>Once the reference to inner() is no longer required, it can be marked for<br>garbage collection, which in turn means bar can also be marked, and finally<br>the entire scope chain can be marked, resulting in the freeing of all the<br>memory.</p>
+<p>In this way, Scope, Scope Chains, Closures, and Garbage Collection are all<br>closely related.</p>
+<h3 id="ps-非常有意思的是最后一个练习是使用Chrome浏览器查看垃圾收集的状况，使用dev-tool-gt-record-js-Heap（蓝色那条线）-gt-垃圾收集通常在高度变化的地方是比较频繁的"><a href="#ps-非常有意思的是最后一个练习是使用Chrome浏览器查看垃圾收集的状况，使用dev-tool-gt-record-js-Heap（蓝色那条线）-gt-垃圾收集通常在高度变化的地方是比较频繁的" class="headerlink" title="ps:非常有意思的是最后一个练习是使用Chrome浏览器查看垃圾收集的状况，使用dev tool-&gt;record js Heap（蓝色那条线）-&gt;垃圾收集通常在高度变化的地方是比较频繁的"></a>ps:非常有意思的是最后一个练习是使用Chrome浏览器查看垃圾收集的状况，使用dev tool-&gt;record js Heap（蓝色那条线）-&gt;垃圾收集通常在高度变化的地方是比较频繁的</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/07/scope-chains-closures/" data-id="cjoo060sf001fc7rsnnuznmya" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/07/windowsCmd/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          windowsCmd
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/02/SHA1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">SHA1算法的猜想</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/前端开发/" style="font-size: 16.67px;">前端开发</a> <a href="/tags/小程序/" style="font-size: 13.33px;">小程序</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/网络基础/" style="font-size: 13.33px;">网络基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/">解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/11/beijiang/">course</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/17/canvas-article/">canvas-article</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Volibear.V<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

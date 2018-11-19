@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>commuication between browser and server | Volibear.V</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Link:What really happens when you navigate to a URL  这篇文章主要分析了当你在浏览器地址栏输入一个url，回车之后发生的事情。 1. 浏览器需要把你的域名解析成IP地址，会按照以下顺序 Browser cache – The browser caches DNS records for some time. Interestingly, the">
+<meta name="keywords" content="网络基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="commuication between browser and server">
+<meta property="og:url" content="http://yoursite.com/2017/03/23/commuication-between-browser-and-server/index.html">
+<meta property="og:site_name" content="Volibear.V">
+<meta property="og:description" content="Link:What really happens when you navigate to a URL  这篇文章主要分析了当你在浏览器地址栏输入一个url，回车之后发生的事情。 1. 浏览器需要把你的域名解析成IP地址，会按照以下顺序 Browser cache – The browser caches DNS records for some time. Interestingly, the">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-16T09:46:11.827Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="commuication between browser and server">
+<meta name="twitter:description" content="Link:What really happens when you navigate to a URL  这篇文章主要分析了当你在浏览器地址栏输入一个url，回车之后发生的事情。 1. 浏览器需要把你的域名解析成IP地址，会按照以下顺序 Browser cache – The browser caches DNS records for some time. Interestingly, the">
+  
+    <link rel="alternate" href="/atom.xml" title="Volibear.V" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Volibear.V</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-commuication-between-browser-and-server" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/23/commuication-between-browser-and-server/" class="article-date">
+  <time datetime="2017-03-23T06:04:27.000Z" itemprop="datePublished">2017-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      commuication between browser and server
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Link:<a href="http://igoro.com/archive/what-really-happens-when-you-navigate-to-a-url/" target="_blank" rel="noopener">What really happens when you navigate to a URL</a> </p>
+<p>这篇文章主要分析了当你在浏览器地址栏输入一个url，回车之后发生的事情。</p>
+<h3 id="1-浏览器需要把你的域名解析成IP地址，会按照以下顺序"><a href="#1-浏览器需要把你的域名解析成IP地址，会按照以下顺序" class="headerlink" title="1. 浏览器需要把你的域名解析成IP地址，会按照以下顺序"></a>1. 浏览器需要把你的域名解析成IP地址，会按照以下顺序</h3><ul>
+<li><strong>Browser cache</strong> – The browser caches DNS records for some time. Interestingly, the OS does not tell the browser the time-to-live for each DNS record, and so the browser caches them for a fixed duration (varies between browsers, 2 – 30 minutes).</li>
+<li><strong>OS cache</strong> – If the browser cache does not contain the desired record, the browser makes a system call (gethostbyname in Windows). The OS has its own cache.<br>Router cache – The request continues on to your router, which typically has its own DNS cache.</li>
+<li><strong>ISP DNS cache</strong> – The next place checked is the cache ISP’s DNS server. With a cache, naturally.</li>
+<li><strong>Recursive search</strong> – Your ISP’s DNS server begins a recursive search, from the root nameserver, through the .com top-level nameserver, to Facebook’s nameserver. Normally, the DNS server will have names of the .com nameservers in cache, and so a hit to the root nameserver will not be necessary.</li>
+</ul>
+<h3 id="2-浏览器向服务器发送http请求"><a href="#2-浏览器向服务器发送http请求" class="headerlink" title="2. 浏览器向服务器发送http请求"></a>2. 浏览器向服务器发送http请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">GET http://facebook.com/ HTTP/1.1</span><br><span class="line">Accept: application/x-ms-application, image/jpeg, application/xaml+xml, [...]//声明浏览器会接受哪种格式的response</span><br><span class="line">User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; [...]//浏览器信息</span><br><span class="line">Accept-Encoding: gzip, deflate//声明浏览器会接受哪种格式的response</span><br><span class="line">Connection: Keep-Alive //告诉服务器为之后的请求保持TCP连接</span><br><span class="line">Host: facebook.com</span><br><span class="line">Cookie: datr=1265876274-[...]; locale=en_US; lsd=WW[...]; c_user=2101[...]</span><br></pre></td></tr></table></figure>
+<h3 id="3-服务器告诉浏览器重定向到真正的网址"><a href="#3-服务器告诉浏览器重定向到真正的网址" class="headerlink" title="3. 服务器告诉浏览器重定向到真正的网址"></a>3. 服务器告诉浏览器重定向到真正的网址</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 301 Moved Permanently</span><br><span class="line">Cache-Control: private, no-store, no-cache, must-revalidate, post-check=0,</span><br><span class="line">      pre-check=0</span><br><span class="line">Expires: Sat, 01 Jan 2000 00:00:00 GMT</span><br><span class="line">Location: http://www.facebook.com/</span><br><span class="line">P3P: CP=<span class="string">"DSP LAW"</span></span><br><span class="line">Pragma: no-cache</span><br><span class="line">Set-Cookie: made_write_conn=deleted; expires=Thu, 12-Feb-2009 05:09:50 GMT;</span><br><span class="line">      path=/; domain=.facebook.com; httponly</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">X-Cnection: close</span><br><span class="line">Date: Fri, 12 Feb 2010 05:09:51 GMT</span><br><span class="line">Content-Length: 0</span><br></pre></td></tr></table></figure>
+<p>由于请求的是’facebook.com’而不是’<a href="http://www.facebook.com&#39;,所以facebook的服务器告诉浏览器重定向到&#39;www.facebook.com&#39;，这样对于用户来说，输入&#39;facebook.com&#39;也能到达&#39;www.facebook.com&#39;,是不是方便了许多？" target="_blank" rel="noopener">www.facebook.com&#39;,所以facebook的服务器告诉浏览器重定向到&#39;www.facebook.com&#39;，这样对于用户来说，输入&#39;facebook.com&#39;也能到达&#39;www.facebook.com&#39;,是不是方便了许多？</a>  </p>
+<p>那么这里有一个问题，为什么不直接在’facebook.com’返回用户想看的’<a href="http://www.facebook.com&#39;的相应页面就好了呢？" target="_blank" rel="noopener">www.facebook.com&#39;的相应页面就好了呢？</a></p>
+<h5 id="有两个原因："><a href="#有两个原因：" class="headerlink" title="有两个原因："></a>有两个原因：</h5><ol>
+<li>搜索引擎排名。’facebook.com’、’<a href="http://www.facebook.com&#39;对于搜索引擎来说，不是同一个网站，流量被分开了，会导致排名降低，这对于网站经营者来说是不利的。" target="_blank" rel="noopener">www.facebook.com&#39;对于搜索引擎来说，不是同一个网站，流量被分开了，会导致排名降低，这对于网站经营者来说是不利的。</a></li>
+<li>cache-friendly.这个是什么意思呢？这是说如果分开这两个域名，那么它们使用的cache就不是能够互相流通的（浏览器的同源策略）,意味着同样的资源你可能要加载两次，不利于性能优化吧。</li>
+</ol>
+<h3 id="4-浏览器执行重定向后的请求"><a href="#4-浏览器执行重定向后的请求" class="headerlink" title="4. 浏览器执行重定向后的请求"></a>4. 浏览器执行重定向后的请求</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">GET http://www.facebook.com/ HTTP/1.1</span><br><span class="line">Accept: application/x-ms-application, image/jpeg, application/xaml+xml, [...]</span><br><span class="line">Accept-Language: en-US</span><br><span class="line">User-Agent: Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; [...]</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: Keep-Alive</span><br><span class="line">Cookie: lsd=XW[...]; c_user=21[...]; x-referer=[...]</span><br><span class="line">Host: www.facebook.com</span><br></pre></td></tr></table></figure>
+<h3 id="5-服务器处理请求"><a href="#5-服务器处理请求" class="headerlink" title="5. 服务器处理请求"></a>5. 服务器处理请求</h3><p>服务器获取请求，处理请求，返回一个response。</p>
+<h5 id="处理请求"><a href="#处理请求" class="headerlink" title="处理请求"></a>处理请求</h5><ul>
+<li><strong>Web server software</strong><ul>
+<li>The web server software (e.g., IIS or Apache) receives the HTTP request and decides which request handler should be executed to handle this request. A request handler is a program (in ASP.NET, PHP, Ruby, …) that reads the request and generates the HTML for the response.</li>
+<li>In the simplest case, the request handlers can be stored in a file hierarchy whose structure mirrors the URL structure, and so for example <a href="http://example.com/folder1/page1.aspx" target="_blank" rel="noopener">http://example.com/folder1/page1.aspx</a> URL will map to file /httpdocs/folder1/page1.aspx. The web server software can also be configured so that URLs are manually mapped to request handlers, and so the public URL of page1.aspx could be <a href="http://example.com/folder1/page1" target="_blank" rel="noopener">http://example.com/folder1/page1</a>.</li>
+</ul>
+</li>
+<li><strong>Request handler</strong><ul>
+<li>The request handler reads the request, its parameters, and cookies. It will read and possibly update some data stored on the server. Then, the request handler will generate a HTML response.</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-服务器返回response"><a href="#6-服务器返回response" class="headerlink" title="6. 服务器返回response"></a>6. 服务器返回response</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Cache-Control: private, no-store, no-cache, must-revalidate, post-check=0,</span><br><span class="line">    pre-check=0</span><br><span class="line">Expires: Sat, 01 Jan 2000 00:00:00 GMT</span><br><span class="line">P3P: CP=<span class="string">"DSP LAW"</span></span><br><span class="line">Pragma: no-cache</span><br><span class="line">Content-Encoding: gzip</span><br><span class="line">Content-Type: text/html; charset=utf-8</span><br><span class="line">X-Cnection: close</span><br><span class="line">Transfer-Encoding: chunked</span><br><span class="line">Date: Fri, 12 Feb 2010 09:05:55 GMT</span><br><span class="line"></span><br><span class="line">2b3</span><br><span class="line">��������T�n�@����[...]</span><br></pre></td></tr></table></figure>
+<p>Content-Encoding 这个字段是告诉browser,response使用了gzip算法压缩的,你需要解压才行</p>
+<h3 id="7-浏览器开始渲染HTML"><a href="#7-浏览器开始渲染HTML" class="headerlink" title="7. 浏览器开始渲染HTML"></a>7. 浏览器开始渲染HTML</h3><blockquote>
+<p>Even before the browser has received the entire HTML document, it begins rendering the website</p>
+</blockquote>
+<h3 id="8-浏览器发送HTML中内嵌的资源请求"><a href="#8-浏览器发送HTML中内嵌的资源请求" class="headerlink" title="8. 浏览器发送HTML中内嵌的资源请求"></a>8. 浏览器发送HTML中内嵌的资源请求</h3><p>资源请求的资源可能有图片，css,script等，与请求一个HTML很相似，都需要解析域名、发送请求、重定向等等上面说过的操作，<br><strong>不过</strong>，与动态页面不同的是，浏览器可以使用静态资源的缓存</p>
+<h3 id="9-浏览器发送AJAX请求"><a href="#9-浏览器发送AJAX请求" class="headerlink" title="9. 浏览器发送AJAX请求"></a>9. 浏览器发送AJAX请求</h3><p>HTML页面被渲染完成后，客户端仍然有可能通过AJAX技术与服务器通信</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/23/commuication-between-browser-and-server/" data-id="cjoo060rl000bc7rskbnsdyqd" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/23/callback-hell/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          callback hell
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/17/wechatProgramNote/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">wechatProgramNote</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/前端开发/" style="font-size: 16.67px;">前端开发</a> <a href="/tags/小程序/" style="font-size: 13.33px;">小程序</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/网络基础/" style="font-size: 13.33px;">网络基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/">解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/11/beijiang/">course</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/17/canvas-article/">canvas-article</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Volibear.V<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

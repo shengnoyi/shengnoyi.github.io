@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Volibear.V</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Volibear.V">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Volibear.V">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Volibear.V">
+  
+    <link rel="alternate" href="/atom.xml" title="Volibear.V" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Volibear.V</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-get-started-learning-typescript" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/11/16/get-started-learning-typescript/" class="article-date">
+  <time datetime="2018-11-16T09:48:35.000Z" itemprop="datePublished">2018-11-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="interfaces"><a href="#interfaces" class="headerlink" title="interfaces"></a>interfaces</h2><h4 id="Excess-Property-Checks"><a href="#Excess-Property-Checks" class="headerlink" title="Excess Property Checks"></a>Excess Property Checks</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface SquareConfig &#123;</span><br><span class="line">    color?: string;</span><br><span class="line">    width?: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function createSquare(config: SquareConfig): &#123; color: string; area: number &#125; &#123;</span><br><span class="line">    // ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let mySquare = createSquare(&#123; colour: &quot;red&quot;, width: 100 &#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Notice the given argument to createSquare is spelled colour instead of color. In plain JavaScript, this sort of thing fails silently.</p>
+</blockquote>
+<blockquote>
+<p>You could argue that this program is correctly typed, since the width properties are compatible, there’s no color property present, and the extra colour property is insignificant.</p>
+</blockquote>
+<blockquote>
+<p>However, TypeScript takes the stance that there’s probably a bug in this code. Object literals get special treatment and undergo excess property checking when assigning them to other variables, or passing them as arguments. If an object literal has any properties that the “target type” doesn’t have, you’ll get an error.</p>
+</blockquote>
+<p>How to get around excess property checks(Use variable instead of object literal):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let squareOptions = &#123; colour: &quot;red&quot;, width: 100 &#125;;</span><br><span class="line">let mySquare = createSquare(squareOptions);</span><br></pre></td></tr></table></figure></p>
+<h2 id="Function-Types"><a href="#Function-Types" class="headerlink" title="Function Types"></a>Function Types</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">interface SearchFunc &#123;</span><br><span class="line">    (source: string, subString: string): boolean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let mySearch: SearchFunc;</span><br><span class="line">mySearch = function(src, sub) &#123;</span><br><span class="line">    let result = src.search(sub);</span><br><span class="line">    return result &gt; -1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Indexable-Types"><a href="#Indexable-Types" class="headerlink" title="Indexable Types"></a>Indexable Types</h2><h2 id="Class-Types"><a href="#Class-Types" class="headerlink" title="Class Types"></a>Class Types</h2><h4 id="Implementing-an-interface"><a href="#Implementing-an-interface" class="headerlink" title="Implementing an interface"></a>Implementing an interface</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface ClockInterface &#123;</span><br><span class="line">    currentTime: Date;</span><br><span class="line">    setTime(d: Date);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Clock implements ClockInterface &#123;</span><br><span class="line">    currentTime: Date;</span><br><span class="line">    setTime(d: Date) &#123;</span><br><span class="line">        this.currentTime = d;</span><br><span class="line">    &#125;</span><br><span class="line">    constructor(h: number, m: number) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Difference-between-the-static-and-instance-sides-of-classes"><a href="#Difference-between-the-static-and-instance-sides-of-classes" class="headerlink" title="Difference between the static and instance sides of classes"></a>Difference between the static and instance sides of classes</h4><ul>
+<li>the type of the static side</li>
+<li>the type of the instance side<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">interface ClockConstructor &#123;</span><br><span class="line">    new (hour: number, minute: number): ClockInterface;</span><br><span class="line">&#125;</span><br><span class="line">interface ClockInterface &#123;</span><br><span class="line">    tick();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function createClock(ctor: ClockConstructor, hour: number, minute: number): ClockInterface &#123;</span><br><span class="line">    return new ctor(hour, minute);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DigitalClock implements ClockInterface &#123;</span><br><span class="line">    constructor(h: number, m: number) &#123; &#125;</span><br><span class="line">    tick() &#123;</span><br><span class="line">        console.log(&quot;beep beep&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">class AnalogClock implements ClockInterface &#123;</span><br><span class="line">    constructor(h: number, m: number) &#123; &#125;</span><br><span class="line">    tick() &#123;</span><br><span class="line">        console.log(&quot;tick tock&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let digital = createClock(DigitalClock, 12, 17);</span><br><span class="line">let analog = createClock(AnalogClock, 7, 32);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Extending-Interfaces"><a href="#Extending-Interfaces" class="headerlink" title="Extending Interfaces"></a>Extending Interfaces</h2><p>interface can extend multiple interfaces:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">interface Shape &#123;</span><br><span class="line">    color: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface PenStroke &#123;</span><br><span class="line">    penWidth: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">interface Square extends Shape, PenStroke &#123;</span><br><span class="line">    sideLength: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let square = &lt;Square&gt;&#123;&#125;;</span><br><span class="line">square.color = &quot;blue&quot;;</span><br><span class="line">square.sideLength = 10;</span><br><span class="line">square.penWidth = 5.0;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Hybrid-Types"><a href="#Hybrid-Types" class="headerlink" title="Hybrid Types"></a>Hybrid Types</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface Counter &#123;</span><br><span class="line">    (start: number): string;</span><br><span class="line">    interval: number;</span><br><span class="line">    reset(): void;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getCounter(): Counter &#123;</span><br><span class="line">    let counter = &lt;Counter&gt;function (start: number) &#123; &#125;;</span><br><span class="line">    counter.interval = 123;</span><br><span class="line">    counter.reset = function () &#123; &#125;;</span><br><span class="line">    return counter;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let c = getCounter();</span><br><span class="line">c(10); // as a function</span><br><span class="line">c.reset(); // as a object</span><br><span class="line">c.interval = 5.0; // as a object</span><br></pre></td></tr></table></figure>
+<h2 id="Interfaces-Extending-Classes"><a href="#Interfaces-Extending-Classes" class="headerlink" title="Interfaces Extending Classes"></a>Interfaces Extending Classes</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/11/16/get-started-learning-typescript/" data-id="cjoo060rv000qc7rscci4f54f" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-install-global-package-failed-with-yarn-in-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/" class="article-date">
+  <time datetime="2018-07-04T13:13:42.000Z" itemprop="datePublished">2018-07-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/">解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>本人在 ubuntu 16.04 下使用 yarn 安装 hexo，出现下面的提示，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">yarn global v0.16.1</span><br><span class="line">warning No license field</span><br><span class="line">[1/4] Resolving packages...</span><br><span class="line">[2/4] Fetching packages...</span><br><span class="line">warning fsevents@1.0.14: The platform &quot;linux&quot; is incompatible with this module.</span><br><span class="line">info &quot;fsevents@1.0.14&quot; is an optional dependency and failed compatibility check. Excluding it from installation.</span><br><span class="line">[3/4] Linking dependencies...</span><br><span class="line">[4/4] Building fresh packages...</span><br><span class="line">success Installed hexo-cli@1.0.2 with binaries:</span><br><span class="line">- hexo</span><br><span class="line">Done in 2.45s.</span><br></pre></td></tr></table></figure></p>
+<p>看上去安装成功了，但在 terminal 打 hexo 的时候却提示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo: command not found</span><br></pre></td></tr></table></figure></p>
+<p>如果只是使用 <code>npm</code> 安装的话，hexo 是可以正常安装的。</p>
+<h3 id="探索"><a href="#探索" class="headerlink" title="探索"></a>探索</h3><p>在 Google 上搜索后发现是在 Ubuntu 下手动安装 <code>yarn</code>，使用 <code>nvm</code> 才会出现的问题，原因可能是 node 没有找到 yarn 的命令行位置，在命令行执行下列<strong>命令（关键）</strong>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=&quot;$PATH:$(yarn global bin)&quot;</span><br></pre></td></tr></table></figure></p>
+<p>删除原有的包, 重新安装：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yarn global remove hexo</span><br><span class="line">yarn global remove hexo-cli</span><br><span class="line">yarn global add hexo</span><br></pre></td></tr></table></figure></p>
+<p>终于成功运行了 <code>hexo</code>，不过当我关掉 terminal 之后发现又是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo: command not found</span><br></pre></td></tr></table></figure></p>
+<p>难道每次都要输入这个命令才能使用 <code>hexo</code>？</p>
+<p>不不不，我们只需要把命令加在 <code>~/.bashrc</code> 文件的末尾，那么每次启动 terminal 的时候就会自动运行这行命令脚本。</p>
+<p>这下子才算大功告成了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/" data-id="cjoo060rw000sc7rss36pnjnj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-beijiang" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/11/beijiang/" class="article-date">
+  <time datetime="2017-11-11T15:51:09.000Z" itemprop="datePublished">2017-11-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/11/11/beijiang/">course</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="北江教程"><a href="#北江教程" class="headerlink" title="北江教程"></a>北江教程</h1><p>大家好！<br>在<a href="https://mp.weixin.qq.com/s/pwvxoFGHsn2qjkE_q3faJw" target="_blank" rel="noopener">开发 | 适用场景广，表单收集类小程序开发案例复盘（上）</a>中，介绍了「北江纺织牛仔新时尚」的产品逻辑和数据库的设计思路，那么今天我们来探索一下「北江纺织牛仔新时尚」主要功能点是怎么使用知晓云在小程序中实现的。</p>
+<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><p>在「北江纺织牛仔新时尚」中，搜索是比较基础的功能，其实它就是一个查询数据的过程。<br>我们从一个搜索的实例去讲一下这个问题，假如我们是一个消费者，想要搜索一个裤型修身的、水洗颜色浅色的、成分全棉的童装牛仔长裤，那么我们应该怎么做这个查询呢？<br><img src="https://cloud-minapp-1.cloud.ifanrusercontent.com/1eESEoVDhdAabNDO.jpg" alt=""><br>看上去有点复杂，那么我们先简化一下，如何搜索童装牛仔长裤的信息：<br>首先，我们需要有这样一张数据表，存储了商品的信息，也就是上一篇中我们讲过的 <code>product</code> 表，由于我们要搜索童装牛仔长裤，那么除了一个商品的其他基本信息外，我们肯定要为童装牛仔长裤设定一个字段用于我们的查询，我们把这个字段定义为 <code>category_id</code>。根据实际的业务场景，一个产品可能会属于很多不同的分类，所以我们把 <code>category_id</code> 设定为数组类型。<br>现在我们的数据表定义已经初步完成了，那么假设<code>product</code> 的 <code>table_id</code> 是 <code>2</code>, 童装的<code>category_id</code>是 <code>3</code>，牛仔长裤的 <code>category_id</code>是 <code>5</code>，那么在小程序端，参考 <a href="https://doc.minapp.com/schema/query.html" target="_blank" rel="noopener">知晓云的文档</a> 去获取所有童装牛仔长裤：<br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const TABLE_ID_PRODUCT = <span class="string">'2'</span></span><br><span class="line">const KIDS_CLOTH_CATEGORY_ID = <span class="string">'3'</span></span><br><span class="line">const JEANS_CLOTH_CATEGORY_ID = <span class="string">'5'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> Product = new wx.BaaS.TableObject(TABLE_ID_PRODUCT)</span><br><span class="line"><span class="built_in">let</span> query = new wx.BaaS.Query()</span><br><span class="line"></span><br><span class="line">// 设置类别为童装牛仔长裤</span><br><span class="line">query.in(<span class="string">'category_id'</span>, [KIDS_CLOTH_CATEGORY_ID, JEANS_CLOTH_CATEGORY_ID])</span><br><span class="line"></span><br><span class="line">Product.setQuery(query).find().<span class="keyword">then</span>( (res) =&gt; &#123;</span><br><span class="line">  // 获取商品成功</span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">  // 获取商品失败，需做错误处理</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>好的，现在搜索童装牛仔长裤的问题解决，会到之前那个更复杂的问题，搜索一个裤型修身的、水洗颜色浅色的、成分全棉的童装牛仔长裤，其实就是往数据表上分别加上裤型、水洗颜色、成分的相关字段，然后在小程序端使用组合查询去把这些查询条件合并起来，嗯，那么我们现在尝试查询所有水洗颜色浅色的童装牛仔长裤：<br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const TABLE_ID_PRODUCT = <span class="string">'2'</span></span><br><span class="line">const KIDS_CLOTH_CATEGORY_ID = <span class="string">'3'</span></span><br><span class="line">const JEANS_CLOTH_CATEGORY_ID = <span class="string">'5'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> targetColor = <span class="string">'浅'</span></span><br><span class="line"><span class="built_in">let</span> Product = new wx.BaaS.TableObject(TABLE_ID_PRODUCT)</span><br><span class="line"><span class="built_in">let</span> query1 = new wx.BaaS.Query()</span><br><span class="line"><span class="built_in">let</span> query2 = new wx.BaaS.Query()</span><br><span class="line"></span><br><span class="line">// 设置类别为童装牛仔长裤</span><br><span class="line">query1.in(<span class="string">'category_id'</span>, [KIDS_CLOTH_CATEGORY_ID, JEANS_CLOTH_CATEGORY_ID])</span><br><span class="line">query2.compare(<span class="string">'color'</span>, <span class="string">'='</span>, targetColor)</span><br><span class="line"></span><br><span class="line">// 使用组合查询 and</span><br><span class="line"><span class="built_in">let</span> andQuery = wx.BaaS.Query.and(query1, query2)</span><br><span class="line"></span><br><span class="line">Product.setQuery(andQuery).find().<span class="keyword">then</span>( (res) =&gt; &#123;</span><br><span class="line">  // 获取商品成功</span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">  // 获取商品失败，需做错误处理</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上面讲了根据筛选条件进行查询，那么做到搜索功能呢？比如我输入’童装’，点击搜索，然后就返回所有童装的商品列表，这里有一种比较简单的做法是给商品表定义一个 <code>keyword</code> 数组类型字段用于这种查询，在用户点击搜索后，把用户输入的 ‘童装’ 作为查询条件添加到查询中，那么我们就会得到一个搜索结果列表。</p>
+<p>数据查询到这里基本就展示完成了，关键是如何结合你的业务需求去一步步完善你的数据表的设计，然后才是使用合适的查询条件去获取数据。对于新手来说，设计出既能满足业务需求又简单优雅的数据表可能是一大挑战，这个只能靠不断实践和经验去完成了。</p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p>在「北江纺织牛仔新时尚」进入商品详情页，我们可以选择把商品添加到自己到购物车中，点击购物车，我们就会跳转到购物车页，可以选择下单，那么这个购物车功能是怎么实现的呢？<br><img src="https://mmbiz.qpic.cn/mmbiz_gif/dzvQgHlKewxOcsypjmkl9ltOibTqdWTrI0mOBKeAYFUnqYTic7t17fqyoqJeiaAqictB5MjYibfd3tfz4tO9WicEER3A/0?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<p>首先，需要说明，在「北江纺织牛仔新时尚」为购物过程中的信息存储添加了如下几个数据表：<br><code>product_sku</code>, 存储了某个商品的相应副产品（面料，挂卡）；<br><code>order_item</code>, 存储了添加购物车中 <code>product_sku</code> 数量的信息；<br><code>order</code>, 存储了某个订单中的 <code>order_item</code> 列表，购物快照，地址等信息；</p>
+<p>在商品详情页中，我们根据页面的商品 id，可以在之前提到的 <code>product</code>表获取它的信息用于展示，在表 <code>product_sku</code> 中查询它的相关副产品（面料，挂卡），在 <code>order_item</code> 表中查询用户之前的购物车信息，这些都是我们用于生成购物车内容的基础信息，在用户选择产品的数量并点击添加到购物车之后，我们会向 <code>order_item</code>新增或者更新相应的数据项，这些数据项其实就代表着最新的购物车信息。</p>
+<p>点击商品详情页中的购物车图标，会直接跳转到购物车页，用户可以在这里选择和修改 <code>order_item</code> 的相关信息，在这个过程中，如果<code>order_item</code> 的相关信息，需要发送更新请求去更新数据库中的信息。<br>点击「下单」时，我们将会根据本次被选择的最新 <code>order_item</code> 的数据项和之前用户登记留下的个人信息等信息生成一条 <code>order</code> 记录，这条记录就可以用于北江纺织与用户的联系沟通，去完成他们的线下订单。</p>
+<p>好了，购物车功能的实现思路基本上就是如此，可能没有搜索功能讲的那么详细，但是关键点仍然是在搜索功能中所说的，如何根据业务需求去设计合适的数据表和表结构，完成相应业务，这个可能真的只能靠实践和经验去完善了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/11/beijiang/" data-id="cjoo060rh0009c7rsaxh4dxqt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-canvas-article" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/17/canvas-article/" class="article-date">
+  <time datetime="2017-10-17T03:51:33.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/canvas-article/">canvas-article</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>根据微信头像和自定义的祝福语，选择好一个祝福语模板，点击确定即可进行祝福语图片的生成</p>
+<h2 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h2><ul>
+<li>通过知晓云，存储祝福语模板的数据和图片文件，并获取微信用户的相关信息，用于后续绘制工作。</li>
+<li>使用微信接口 <code>wx.getImageInfo</code> 获取网络图片的临时文件路径。</li>
+<li>使用图片的临时文件和相关的数据信息，使用小程序的 canvas 接口进行图像绘制，绘制成功之后，使用 <code>wx.canvasToTempFilePath</code> 保存 canvas 的图像至临时文件，之后可使用 <code>wx.saveImageToPhotosAlbum</code> 保存图片到手机相册中</li>
+</ul>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><h3 id="资源加载"><a href="#资源加载" class="headerlink" title="资源加载"></a>资源加载</h3><h5 id="获取微信头像和昵称"><a href="#获取微信头像和昵称" class="headerlink" title="获取微信头像和昵称"></a>获取微信头像和昵称</h5><p>  先使用 <code>wx.BaaS.login</code> 进行登录，若用户允许小程序获取用户个人信息，那么登录成功之后 <code>BaaS JS SDK</code> 会自动将用户的个人信息存储到小程序中，使用同步方法<code>wx.BaaS.storage.get(&#39;userinfo&#39;)</code> 即可获取，详见知晓云的<a href="https://doc.minapp.com/user/get-userinfo.html" target="_blank" rel="noopener">官方文档</a><br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">onLoad</span></span>() &#123;</span><br><span class="line">  <span class="built_in">let</span> userInfo = wx.BaaS.storage.get(<span class="string">'userinfo'</span>)</span><br><span class="line">  // 设置用户个人信息</span><br><span class="line">  const setUserInfo = (userInfo) =&gt; &#123;</span><br><span class="line">    <span class="built_in">let</span> &#123; nickName, avatarUrl &#125; = userInfo</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      nickName,</span><br><span class="line">      avatarUrl</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  wx.showLoading(&#123;</span><br><span class="line">    title: <span class="string">'请稍等'</span>,</span><br><span class="line">    mask: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 尝试获取用户信息，若获取失败，则使用 wx.BaaS.login 进行登录</span><br><span class="line">  <span class="keyword">if</span> (userInfo) &#123;</span><br><span class="line">    setUserInfo(userInfo)</span><br><span class="line"></span><br><span class="line">    // 加载祝福语模板的数据</span><br><span class="line">    this.loadWishTemplates()</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    wx.BaaS.login().<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">      <span class="built_in">let</span> userInfo = wx.BaaS.storage.get(<span class="string">'userinfo'</span>)</span><br><span class="line">      setUserInfo(userInfo)</span><br><span class="line"></span><br><span class="line">      // 加载祝福语模板的数据</span><br><span class="line">      this.loadWishTemplates()</span><br><span class="line">    &#125;).catch(err =&gt; console.log(err))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h5 id="获取祝福语模板信息（主要是背景图的链接）"><a href="#获取祝福语模板信息（主要是背景图的链接）" class="headerlink" title="获取祝福语模板信息（主要是背景图的链接）"></a>获取祝福语模板信息（主要是背景图的链接）</h5><p>  为了能方便地添加新的模板，我们将模板的相关数据和图片文件都存储在知晓云中<br>  <img src="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4LP9rHqevWcskS.png!/fw/800" alt="在知晓云中建立一个存放祝福语模板信息的表"></p>
+<p>  <img src="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4LTqiNBMBsBGxD.png!/fw/1000" alt="上传图片到知晓云"></p>
+<h3 id="展示效果图"><a href="#展示效果图" class="headerlink" title="展示效果图"></a>展示效果图</h3><p>由于 canvas 绘制图片需要耗费一定的时间，所以我们需要另外做一个的预览效果图，而不是直接使用 canvas 显示</p>
+<p><img src="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4Lh9vxFiACUvcs.png!/fw/350" alt="预览效果图"></p>
+<h3 id="获取图片的临时文件用于-canvas-绘制"><a href="#获取图片的临时文件用于-canvas-绘制" class="headerlink" title="获取图片的临时文件用于 canvas 绘制"></a>获取图片的临时文件用于 canvas 绘制</h3><p>由于小程序的 canvas 接口 <code>canvasContext.drawImage</code> 并不能直接使用网络图片资源，所以我们应该将网络图片资源下载后再使用它们来进行图片绘制，相关的接口就是前面提到的 <code>wx.getImageInfo</code>, 当然，使用 <code>wx.downloadFile</code> 也能达到同样的效果</p>
+<h3 id="绘制过程"><a href="#绘制过程" class="headerlink" title="绘制过程"></a>绘制过程</h3><h5 id="canvas-的显示控制"><a href="#canvas-的显示控制" class="headerlink" title="canvas 的显示控制"></a>canvas 的显示控制</h5><p>在第 2 步的时候没有直接使用 canvas 组件去做效果预览，为了页面的美观，将暂时用不到的 canvas 组件隐藏起来了。<br>由于小程序的 canvas 比较特别，当它在页面上不可见时，无法正常进行使用，也就是说，我们不能像平时在浏览器开发时设置 canvas 的 css 属性为 <code>display:none</code> 或者 <code>visibility:hidden</code>。<br>所以，在我们按下确定按钮，开始进行生成祝福语时, 做了如下处理：<br>调用微信接口 <code>wx.showloading(object)</code> 提示用户等待，并且设置 <code>wx.showloading(object)</code> 的参数 <code>object.mask = true</code>,使得用户在图片生成动作完成之前无法操作页面。<br>这时，小程序就偷偷地把 canvas 组件显示在用户看不到的页面下面，进行绘制过程。<br>在绘制过程完成之后，我们又会把 canvas 组件藏起来。</p>
+<figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">handleConfirm</span></span>() &#123;</span><br><span class="line">  wx.showLoading(&#123;</span><br><span class="line">    title: <span class="string">'正在生成图片'</span>,</span><br><span class="line">    mask: <span class="literal">true</span>,</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  this.showCanvas()</span><br><span class="line"></span><br><span class="line">  this.generateWishesImage().<span class="keyword">then</span>((res) =&gt; &#123;</span><br><span class="line">    wx.hideLoading()</span><br><span class="line">  &#125;).catch(err =&gt; &#123;</span><br><span class="line">    console.log(err)</span><br><span class="line">    wx.hideLoading()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h5 id="网络资源加载"><a href="#网络资源加载" class="headerlink" title="网络资源加载"></a>网络资源加载</h5><p>由于小程序的 canvas 无法直接使用网络图片进行绘制，所以当我们需要使用一个图片资源时，应该先使用 <code>wx.getImageInfo</code> 去获取该资源的临时文件。<br>这里分享一个小技巧吧，笔者上传的图片没有压缩，所以调用 <code>wx.getImageInfo</code> 加载图片还是比较久的，怎么提高加载速度又不用每次上传都手动去压缩图片呢？答案就是使用知晓云的图片云处理功能，使用给图片资源加上特定的后缀，可以利用图片云处理功能获得合适大小的图片，附上更详细的使用方法–<a href="http://support.minapp.com/hc/kb/article/1082737/" target="_blank" rel="noopener">图片云处理</a><br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">loadResources</span></span>() &#123;</span><br><span class="line">  const &#123; bgWishes, avatarUrl &#125; = this.data</span><br><span class="line">  const getImageInfo = (src) =&gt; &#123;</span><br><span class="line">    <span class="built_in">return</span> new Promise((fulfill, reject) =&gt; &#123;</span><br><span class="line">      wx.getImageInfo(&#123;</span><br><span class="line">        src,</span><br><span class="line">        success(&#123; width, height, path &#125;) &#123;</span><br><span class="line">          fulfill(path)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">fail</span></span>() &#123;</span><br><span class="line">          reject(`获取图片失败:<span class="variable">$&#123;src&#125;</span>`)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 存在知晓云服务器上的图片，可使用知晓云的图片云处理功能，提高加载速度</span><br><span class="line">  const getZippedImage = (&#123; width = 300, src &#125;) =&gt; &#123;</span><br><span class="line">    <span class="built_in">return</span> `<span class="variable">$&#123;src&#125;</span>!/fw/<span class="variable">$&#123;width&#125;</span>`</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 一次性加载所有图片资源获取</span><br><span class="line">  <span class="built_in">let</span> promises = [getImageInfo(getZippedImage(&#123; src: bgWishes &#125;)), getImageInfo(avatarUrl)]</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> Promise.all(promises).<span class="keyword">then</span>(values =&gt; &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      bgWishes: values[0],</span><br><span class="line">      avatarUrl: values[1],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h5 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h5><p>完成上一步的资源加载之后，我们终于可以开始画画了，使用 canvas 进行图片绘制，使用过 HTML5 的 canvas API 的同学应该都很熟悉吧。<br>值得一说的是 canvas 中的距离单位为 px, 附上坐标系示意图：<br><img src="https://mdn.mozillademos.org/files/224/Canvas_default_grid.png" alt="canvas 的坐标系"><br>绘制的过程，调用 <code>wx.createCanvasContent(canvasID)</code> 获取画布的上下文 ctx，依次完成绘制背景、祝福语的内容、微信用户头像和昵称、祝福人数等信息的逻辑，本文的 demo 主要是做了绘制图片和绘制文字两个工作。</p>
+<h6 id="绘制图片"><a href="#绘制图片" class="headerlink" title="绘制图片"></a>绘制图片</h6><p>调用 <code>ctx.drawImage(resources, x, y, width, height)</code>即可，<code>resource</code> 需要使用我们之前获得的临时文件路径。</p>
+<h6 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h6><p>这个比绘制图片稍微复杂一些，比如绘制祝福语的内容时，用户可能输入很长的字符串，为了美观，我们需要按照一定规则将它们分组换行。<br>在本文的示例代码中，为了方便演示，我使用了比较简单的规则，每十六个字符为一行，有兴趣的读者可以考虑自己丰富这一块的逻辑，考虑中英文、符号等特殊情况。<br>确定好要绘制的单行文本之后，使用 <code>wx.setFontSize</code> 和 <code>wx.setTextAlign</code> 分别设置字体大小和字体对齐方式，关于接口 <code>ctx.setTextAlign</code> 的使用，请参考示意图：<br><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-text-align.png?t=20171013" alt="canvasContext.setTextAlign 示意"><br>附上 demo 绘制逻辑的代码：<br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">drawImage(&#123; resources &#125;) &#123;</span><br><span class="line">  const ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">  const &#123; bgWishes, avatarUrl &#125; = resources</span><br><span class="line">  const &#123; nickName, count, wishesContent &#125; = this.data</span><br><span class="line">  const CANVAS_W = 300</span><br><span class="line">  const CANVAS_H = 375</span><br><span class="line"></span><br><span class="line">  // draw background</span><br><span class="line">  ctx.drawImage(bgWishes, 0, 0, CANVAS_W, CANVAS_H)</span><br><span class="line"></span><br><span class="line">  // draw wishes content</span><br><span class="line">  const getWishBlocks = (content = <span class="string">''</span>) =&gt; &#123;</span><br><span class="line">    <span class="built_in">let</span> result = []</span><br><span class="line">    <span class="keyword">if</span> (typeof content === <span class="string">'string'</span>) &#123;</span><br><span class="line">      // 将文字简单分行，每十六个字符为一行</span><br><span class="line">      const COUNT_PER_BLOCK = 16</span><br><span class="line">      <span class="keyword">for</span> (<span class="built_in">let</span> offset = 0, l = content.length; offset &lt; l;) &#123;</span><br><span class="line">        <span class="built_in">let</span> start = offset</span><br><span class="line">        <span class="built_in">let</span> end = offset + COUNT_PER_BLOCK</span><br><span class="line">        <span class="built_in">let</span> block = content.substring(start, end)</span><br><span class="line">        result.push(block)</span><br><span class="line">        offset += COUNT_PER_BLOCK</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">  const WISHES_X = CANVAS_W / 2</span><br><span class="line">  const WISHES_Y = 90</span><br><span class="line">  const WISHES_LIGHT_HEIGHT = 21</span><br><span class="line">  ctx.setTextAlign(<span class="string">'center'</span>)</span><br><span class="line">  ctx.setFontSize(15)</span><br><span class="line">  <span class="built_in">let</span> wishesContentBlocks = getWishBlocks(wishesContent)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">let</span> i = 0, l = wishesContentBlocks.length; i &lt; l; i++) &#123;</span><br><span class="line">    <span class="built_in">let</span> x = WISHES_X</span><br><span class="line">    <span class="built_in">let</span> y = WISHES_Y + WISHES_LIGHT_HEIGHT * i</span><br><span class="line">    ctx.fillText(wishesContentBlocks[i], x, y)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // draw userInfo</span><br><span class="line">  //draw avatar</span><br><span class="line">  const AVATAR_X = CANVAS_W - 5 - 53</span><br><span class="line">  const AVATAR_Y = CANVAS_H - 104 - 15</span><br><span class="line">  const AVATAR_SIZE = 53</span><br><span class="line">  ctx.drawImage(avatarUrl, AVATAR_X, AVATAR_Y, 53, 53)</span><br><span class="line">  // draw avatar border</span><br><span class="line"></span><br><span class="line">  // draw nickname</span><br><span class="line">  const NICKNAME_X = CANVAS_W - 5</span><br><span class="line">  const NICKNAME_Y = CANVAS_H - 20 - 5 - 15</span><br><span class="line">  ctx.setTextAlign(<span class="string">'right'</span>)</span><br><span class="line">  ctx.setFontSize(15)</span><br><span class="line">  ctx.fillText(nickName, NICKNAME_X, NICKNAME_Y)</span><br><span class="line"></span><br><span class="line">  // draw wishes count</span><br><span class="line">  const COUNT_X = NICKNAME_X</span><br><span class="line">  const COUNT_Y = CANVAS_H - 15</span><br><span class="line">  ctx.setTextAlign(<span class="string">'right'</span>)</span><br><span class="line">  ctx.setFontSize(13)</span><br><span class="line">  ctx.fillText(`第<span class="variable">$&#123;count&#125;</span>位送出祝福`, COUNT_X, COUNT_Y)</span><br><span class="line"></span><br><span class="line">  ctx.draw()</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> ctx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><p>在完成绘制过程之后，我们需要将 canvas 中辛辛苦苦绘制的图像保存下来。<br>调用 <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/temp-file.html" target="_blank" rel="noopener"><code>wx.canvasToTempFilePath(OBJECT)</code></a>，可以获得图像的临时文件路径，这时，我们使用该路径，就可以把它显示在 <code>&lt;image/&gt;</code> 标签中了。<br>如果需要把图片保存下来，可以调用 <code>wx.saveImageToPhotosAlbum(OBJECT)</code>, 把临时文件保存到手机相册中。</p>
+<p>##<br>好了，关于如何使用 canvas 绘制祝福语图片的教程就到此结束了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/10/17/canvas-article/" data-id="cjoo060rf0008c7rslvunegs6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-frontend-testing" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/09/15/frontend-testing/" class="article-date">
+  <time datetime="2017-09-15T02:48:39.000Z" itemprop="datePublished">2017-09-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/15/frontend-testing/">Frontend Testing</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="assert"><a href="#assert" class="headerlink" title="assert"></a>assert</h3><p><a href="http://javascript.ruanyifeng.com/nodejs/assert.html" target="_blank" rel="noopener">assert module</a><br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var assert = require(<span class="string">'assert'</span>)</span><br><span class="line"><span class="keyword">function</span> add(a, b) &#123;</span><br><span class="line">  <span class="built_in">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">assert(add(1, 2) === 3, <span class="string">'add(1, 2) should be 3'</span>)</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/09/15/frontend-testing/" data-id="cjoo060rm000dc7rse2y0zwqc" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-about-canvas" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/03/about-canvas/" class="article-date">
+  <time datetime="2017-06-03T10:00:52.000Z" itemprop="datePublished">2017-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/03/about-canvas/">about-canvas</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Canvas学习笔记"><a href="#Canvas学习笔记" class="headerlink" title="Canvas学习笔记"></a>Canvas学习笔记</h1><h2 id="坐标系（The-grid）"><a href="#坐标系（The-grid）" class="headerlink" title="坐标系（The grid）"></a>坐标系（The grid）</h2><p><img src="https://mdn.mozillademos.org/files/224/Canvas_default_grid.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/06/03/about-canvas/" data-id="cjoo060rd0005c7rsrh7kszmw" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-knowldge-tree" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/21/knowldge-tree/" class="article-date">
+  <time datetime="2017-05-21T09:32:45.000Z" itemprop="datePublished">2017-05-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/21/knowldge-tree/">knowldge-tree</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这篇主要记录一下我自己在前端开发方面，有哪些知识点是不够精确的，需要改进的。</p>
+<h3 id="http与协商缓存"><a href="#http与协商缓存" class="headerlink" title="http与协商缓存"></a>http与协商缓存</h3><h3 id="浏览器的工作方式"><a href="#浏览器的工作方式" class="headerlink" title="浏览器的工作方式"></a>浏览器的工作方式</h3><h3 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h3><h3 id="算法与数据结构"><a href="#算法与数据结构" class="headerlink" title="算法与数据结构"></a>算法与数据结构</h3><h3 id="vuex"><a href="#vuex" class="headerlink" title="vuex"></a>vuex</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/21/knowldge-tree/" data-id="cjoo060rz000xc7rsy2n78omb" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-learn-vue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/11/learn-vue/" class="article-date">
+  <time datetime="2017-05-11T02:45:41.000Z" itemprop="datePublished">2017-05-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/11/learn-vue/">vue单文件组件初使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="使用webpack-simple"><a href="#使用webpack-simple" class="headerlink" title="使用webpack-simple"></a>使用webpack-simple</h3><p>这一篇介绍了如何配置webpack，构建Vue单文件组件，参考了vue.js的官方模板<a href="https://github.com/vuejs-templates/webpack-simple" target="_blank" rel="noopener">webpack-simple</a>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g vue-cli</span><br><span class="line">$ vue init webpack-simple my-project</span><br><span class="line">$ cd my-project</span><br><span class="line">$ npm install</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure></p>
+<h3 id="node-sass"><a href="#node-sass" class="headerlink" title="node-sass"></a>node-sass</h3><p>如果选择了使用sass选项，就会需要安装node-sass模块，安装node-sass模块时可能会出现安装不成功的问题，可以参考之前的文档<a href="https://shengnoyi.github.io/2017/03/31/install-node-sass/" target="_blank" rel="noopener">install node-sass</a></p>
+<h3 id="autoprefixer"><a href="#autoprefixer" class="headerlink" title="autoprefixer"></a>autoprefixer</h3><p>写前端样式的时候，希望webpac自动帮忙补充一些兼容性前缀，需要安装postcss 和 autoprefixer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save postcss autoprefixer -d</span><br></pre></td></tr></table></figure></p>
+<p>在项目根目录新建一个postcss配置文件postcss.config.js:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    require(<span class="string">'autoprefixer'</span>)()</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="babel-polyfill"><a href="#babel-polyfill" class="headerlink" title="babel-polyfill"></a>babel-polyfill</h3><p>好了，现在可以解析.vue文件了，也可以在.vue中使用sass语法，添加前缀。<br>我在测试babel转换es6语法的时候发现，es6的API—Promise在IE9浏览器中用不了（chrome可以，因为chrome实现了Promise)，原来babel只转换语法，不会帮你转换API,这个时候就要用到<a href="https://babeljs.io/docs/usage/polyfill/" target="_blank" rel="noopener">babel-polifill</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install --save babel-polyfill -d</span><br></pre></td></tr></table></figure>
+<p>安装完毕之后，在webpack.config.js的配置修改如下:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">  entry: [<span class="string">'babel-polyfill'</span>,<span class="string">'./src/main.js'</span>],</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>在需要用到Promise.js的地方，使用es6语法:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import <span class="string">"babel-polyfill"</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="自动生成发布时html"><a href="#自动生成发布时html" class="headerlink" title="自动生成发布时html"></a>自动生成发布时html</h3><p>做完以上工作之后，我把构建之后的文件放在一个服务器上，发现一个问题，由于index.html是固定的，所以如果不手动改时间戳的话，浏览器就不会用新构建的.js文件，而是使用了浏览器缓存，所以必须加上时间戳，但每次发布都手动改实在很麻烦，解决方法：</p>
+<p>使用webpack插件<a href="https://github.com/jantimon/html-webpack-plugin" target="_blank" rel="noopener">html-webpack-plugin</a>:<br><code>$ npm install --save html-webpack-plugin -d</code></p>
+<p>参考配置如下，使用根目录下的文件index.tmpl.html作为构建模板，会生成一个.html到你的发布目录之中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plugin:[</span><br><span class="line">	new HtmlWebpackPlugin(&#123;</span><br><span class="line">      title:<span class="string">'洋葱派'</span>,</span><br><span class="line">      <span class="built_in">hash</span>:<span class="literal">true</span>,</span><br><span class="line">      template:__dirname+<span class="string">'/index.tmpl.html'</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/11/learn-vue/" data-id="cjoo060s30011c7rsqbqoo419" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-type-of-null" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/08/type-of-null/" class="article-date">
+  <time datetime="2017-05-08T06:56:58.000Z" itemprop="datePublished">2017-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/type-of-null/">typeof null</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天翻看typeof的<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="noopener">文档</a>，发现<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof null === <span class="string">''</span>;//<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>跟着索引，发现了一个有趣的小故事:<a href="http://2ality.com/2013/10/typeof-null.html" target="_blank" rel="noopener">the history of “typeof null”</a>,原来，这是JavaScript实现的bug，事实上，typeof null应该等于’null’，但是在es6上关于修复这个bug的提议已被否决了，因为修复后可能造成现有代码奔溃。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/08/type-of-null/" data-id="cjoo060si001ic7rsbp0t5xv9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-when-to-catch-and-when-to-throw-exception" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/08/when-to-catch-and-when-to-throw-exception/" class="article-date">
+  <time datetime="2017-05-08T02:25:15.000Z" itemprop="datePublished">2017-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/when-to-catch-and-when-to-throw-exception/">when to catch and when to throw exception</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考资料：<a href="http://stackoverflow.com/questions/18679090/when-to-catch-the-exception-vs-when-to-throw-the-exceptions" target="_blank" rel="noopener">When to catch the Exception vs When to throw the Exceptions?</a></p>
+<blockquote>
+<p>You should catch the exception when you are in the method that knows what to do.</p>
+</blockquote>
+<p>就是说，一个异常应该在哪里被捕获，应该取决于被捕获的地方是否能知道怎么处理这个异常，否则就应该被抛出到更上层去处理。</p>
+<p>当然，我想知道的是，是不是所有的异常都应该被捕获和处理，应该可能出错的情况太多了，是否都值得去处理，或者某些异常就是应该只是被抛出而已。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/08/when-to-catch-and-when-to-throw-exception/" data-id="cjoo060sl001mc7rsgwopqz01" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">__('next') &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/前端开发/" style="font-size: 16.67px;">前端开发</a> <a href="/tags/小程序/" style="font-size: 13.33px;">小程序</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/网络基础/" style="font-size: 13.33px;">网络基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/">解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/11/beijiang/">course</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/17/canvas-article/">canvas-article</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Volibear.V<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>course | Volibear.V</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="北江教程大家好！在开发 | 适用场景广，表单收集类小程序开发案例复盘（上）中，介绍了「北江纺织牛仔新时尚」的产品逻辑和数据库的设计思路，那么今天我们来探索一下「北江纺织牛仔新时尚」主要功能点是怎么使用知晓云在小程序中实现的。 搜索功能在「北江纺织牛仔新时尚」中，搜索是比较基础的功能，其实它就是一个查询数据的过程。我们从一个搜索的实例去讲一下这个问题，假如我们是一个消费者，想要搜索一个裤型修身的、水">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="course">
+<meta property="og:url" content="http://yoursite.com/2017/11/11/beijiang/index.html">
+<meta property="og:site_name" content="Volibear.V">
+<meta property="og:description" content="北江教程大家好！在开发 | 适用场景广，表单收集类小程序开发案例复盘（上）中，介绍了「北江纺织牛仔新时尚」的产品逻辑和数据库的设计思路，那么今天我们来探索一下「北江纺织牛仔新时尚」主要功能点是怎么使用知晓云在小程序中实现的。 搜索功能在「北江纺织牛仔新时尚」中，搜索是比较基础的功能，其实它就是一个查询数据的过程。我们从一个搜索的实例去讲一下这个问题，假如我们是一个消费者，想要搜索一个裤型修身的、水">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cloud-minapp-1.cloud.ifanrusercontent.com/1eESEoVDhdAabNDO.jpg">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/dzvQgHlKewxOcsypjmkl9ltOibTqdWTrI0mOBKeAYFUnqYTic7t17fqyoqJeiaAqictB5MjYibfd3tfz4tO9WicEER3A/0?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:updated_time" content="2018-11-16T09:46:11.826Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="course">
+<meta name="twitter:description" content="北江教程大家好！在开发 | 适用场景广，表单收集类小程序开发案例复盘（上）中，介绍了「北江纺织牛仔新时尚」的产品逻辑和数据库的设计思路，那么今天我们来探索一下「北江纺织牛仔新时尚」主要功能点是怎么使用知晓云在小程序中实现的。 搜索功能在「北江纺织牛仔新时尚」中，搜索是比较基础的功能，其实它就是一个查询数据的过程。我们从一个搜索的实例去讲一下这个问题，假如我们是一个消费者，想要搜索一个裤型修身的、水">
+<meta name="twitter:image" content="https://cloud-minapp-1.cloud.ifanrusercontent.com/1eESEoVDhdAabNDO.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Volibear.V" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Volibear.V</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-beijiang" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/11/beijiang/" class="article-date">
+  <time datetime="2017-11-11T15:51:09.000Z" itemprop="datePublished">2017-11-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      course
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="北江教程"><a href="#北江教程" class="headerlink" title="北江教程"></a>北江教程</h1><p>大家好！<br>在<a href="https://mp.weixin.qq.com/s/pwvxoFGHsn2qjkE_q3faJw" target="_blank" rel="noopener">开发 | 适用场景广，表单收集类小程序开发案例复盘（上）</a>中，介绍了「北江纺织牛仔新时尚」的产品逻辑和数据库的设计思路，那么今天我们来探索一下「北江纺织牛仔新时尚」主要功能点是怎么使用知晓云在小程序中实现的。</p>
+<h3 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h3><p>在「北江纺织牛仔新时尚」中，搜索是比较基础的功能，其实它就是一个查询数据的过程。<br>我们从一个搜索的实例去讲一下这个问题，假如我们是一个消费者，想要搜索一个裤型修身的、水洗颜色浅色的、成分全棉的童装牛仔长裤，那么我们应该怎么做这个查询呢？<br><img src="https://cloud-minapp-1.cloud.ifanrusercontent.com/1eESEoVDhdAabNDO.jpg" alt=""><br>看上去有点复杂，那么我们先简化一下，如何搜索童装牛仔长裤的信息：<br>首先，我们需要有这样一张数据表，存储了商品的信息，也就是上一篇中我们讲过的 <code>product</code> 表，由于我们要搜索童装牛仔长裤，那么除了一个商品的其他基本信息外，我们肯定要为童装牛仔长裤设定一个字段用于我们的查询，我们把这个字段定义为 <code>category_id</code>。根据实际的业务场景，一个产品可能会属于很多不同的分类，所以我们把 <code>category_id</code> 设定为数组类型。<br>现在我们的数据表定义已经初步完成了，那么假设<code>product</code> 的 <code>table_id</code> 是 <code>2</code>, 童装的<code>category_id</code>是 <code>3</code>，牛仔长裤的 <code>category_id</code>是 <code>5</code>，那么在小程序端，参考 <a href="https://doc.minapp.com/schema/query.html" target="_blank" rel="noopener">知晓云的文档</a> 去获取所有童装牛仔长裤：<br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">const TABLE_ID_PRODUCT = <span class="string">'2'</span></span><br><span class="line">const KIDS_CLOTH_CATEGORY_ID = <span class="string">'3'</span></span><br><span class="line">const JEANS_CLOTH_CATEGORY_ID = <span class="string">'5'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> Product = new wx.BaaS.TableObject(TABLE_ID_PRODUCT)</span><br><span class="line"><span class="built_in">let</span> query = new wx.BaaS.Query()</span><br><span class="line"></span><br><span class="line">// 设置类别为童装牛仔长裤</span><br><span class="line">query.in(<span class="string">'category_id'</span>, [KIDS_CLOTH_CATEGORY_ID, JEANS_CLOTH_CATEGORY_ID])</span><br><span class="line"></span><br><span class="line">Product.setQuery(query).find().<span class="keyword">then</span>( (res) =&gt; &#123;</span><br><span class="line">  // 获取商品成功</span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">  // 获取商品失败，需做错误处理</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>好的，现在搜索童装牛仔长裤的问题解决，会到之前那个更复杂的问题，搜索一个裤型修身的、水洗颜色浅色的、成分全棉的童装牛仔长裤，其实就是往数据表上分别加上裤型、水洗颜色、成分的相关字段，然后在小程序端使用组合查询去把这些查询条件合并起来，嗯，那么我们现在尝试查询所有水洗颜色浅色的童装牛仔长裤：<br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const TABLE_ID_PRODUCT = <span class="string">'2'</span></span><br><span class="line">const KIDS_CLOTH_CATEGORY_ID = <span class="string">'3'</span></span><br><span class="line">const JEANS_CLOTH_CATEGORY_ID = <span class="string">'5'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> targetColor = <span class="string">'浅'</span></span><br><span class="line"><span class="built_in">let</span> Product = new wx.BaaS.TableObject(TABLE_ID_PRODUCT)</span><br><span class="line"><span class="built_in">let</span> query1 = new wx.BaaS.Query()</span><br><span class="line"><span class="built_in">let</span> query2 = new wx.BaaS.Query()</span><br><span class="line"></span><br><span class="line">// 设置类别为童装牛仔长裤</span><br><span class="line">query1.in(<span class="string">'category_id'</span>, [KIDS_CLOTH_CATEGORY_ID, JEANS_CLOTH_CATEGORY_ID])</span><br><span class="line">query2.compare(<span class="string">'color'</span>, <span class="string">'='</span>, targetColor)</span><br><span class="line"></span><br><span class="line">// 使用组合查询 and</span><br><span class="line"><span class="built_in">let</span> andQuery = wx.BaaS.Query.and(query1, query2)</span><br><span class="line"></span><br><span class="line">Product.setQuery(andQuery).find().<span class="keyword">then</span>( (res) =&gt; &#123;</span><br><span class="line">  // 获取商品成功</span><br><span class="line">&#125;, (err) =&gt; &#123;</span><br><span class="line">  // 获取商品失败，需做错误处理</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>上面讲了根据筛选条件进行查询，那么做到搜索功能呢？比如我输入’童装’，点击搜索，然后就返回所有童装的商品列表，这里有一种比较简单的做法是给商品表定义一个 <code>keyword</code> 数组类型字段用于这种查询，在用户点击搜索后，把用户输入的 ‘童装’ 作为查询条件添加到查询中，那么我们就会得到一个搜索结果列表。</p>
+<p>数据查询到这里基本就展示完成了，关键是如何结合你的业务需求去一步步完善你的数据表的设计，然后才是使用合适的查询条件去获取数据。对于新手来说，设计出既能满足业务需求又简单优雅的数据表可能是一大挑战，这个只能靠不断实践和经验去完成了。</p>
+<h3 id="购物车"><a href="#购物车" class="headerlink" title="购物车"></a>购物车</h3><p>在「北江纺织牛仔新时尚」进入商品详情页，我们可以选择把商品添加到自己到购物车中，点击购物车，我们就会跳转到购物车页，可以选择下单，那么这个购物车功能是怎么实现的呢？<br><img src="https://mmbiz.qpic.cn/mmbiz_gif/dzvQgHlKewxOcsypjmkl9ltOibTqdWTrI0mOBKeAYFUnqYTic7t17fqyoqJeiaAqictB5MjYibfd3tfz4tO9WicEER3A/0?wx_fmt=gif&amp;tp=webp&amp;wxfrom=5&amp;wx_lazy=1" alt=""></p>
+<p>首先，需要说明，在「北江纺织牛仔新时尚」为购物过程中的信息存储添加了如下几个数据表：<br><code>product_sku</code>, 存储了某个商品的相应副产品（面料，挂卡）；<br><code>order_item</code>, 存储了添加购物车中 <code>product_sku</code> 数量的信息；<br><code>order</code>, 存储了某个订单中的 <code>order_item</code> 列表，购物快照，地址等信息；</p>
+<p>在商品详情页中，我们根据页面的商品 id，可以在之前提到的 <code>product</code>表获取它的信息用于展示，在表 <code>product_sku</code> 中查询它的相关副产品（面料，挂卡），在 <code>order_item</code> 表中查询用户之前的购物车信息，这些都是我们用于生成购物车内容的基础信息，在用户选择产品的数量并点击添加到购物车之后，我们会向 <code>order_item</code>新增或者更新相应的数据项，这些数据项其实就代表着最新的购物车信息。</p>
+<p>点击商品详情页中的购物车图标，会直接跳转到购物车页，用户可以在这里选择和修改 <code>order_item</code> 的相关信息，在这个过程中，如果<code>order_item</code> 的相关信息，需要发送更新请求去更新数据库中的信息。<br>点击「下单」时，我们将会根据本次被选择的最新 <code>order_item</code> 的数据项和之前用户登记留下的个人信息等信息生成一条 <code>order</code> 记录，这条记录就可以用于北江纺织与用户的联系沟通，去完成他们的线下订单。</p>
+<p>好了，购物车功能的实现思路基本上就是如此，可能没有搜索功能讲的那么详细，但是关键点仍然是在搜索功能中所说的，如何根据业务需求去设计合适的数据表和表结构，完成相应业务，这个可能真的只能靠实践和经验去完善了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/11/beijiang/" data-id="cjoo060rh0009c7rsaxh4dxqt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/17/canvas-article/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">canvas-article</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/前端开发/" style="font-size: 16.67px;">前端开发</a> <a href="/tags/小程序/" style="font-size: 13.33px;">小程序</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/网络基础/" style="font-size: 13.33px;">网络基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/">解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/11/beijiang/">course</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/17/canvas-article/">canvas-article</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Volibear.V<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

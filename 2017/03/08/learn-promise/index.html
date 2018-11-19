@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>learn-promise | Volibear.V</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="参考资料：   npm install -g promise-it-wont-hurt exercise 8123456789&apos;use strict&apos;;function attachTitle(name) &amp;#123;  return &apos;DR. &apos; + name;&amp;#125;Promise.resolve(&apos;MANHATTAN&apos;)  .then(attachTitle)  .then(consol">
+<meta name="keywords" content="Javascript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="learn-promise">
+<meta property="og:url" content="http://yoursite.com/2017/03/08/learn-promise/index.html">
+<meta property="og:site_name" content="Volibear.V">
+<meta property="og:description" content="参考资料：   npm install -g promise-it-wont-hurt exercise 8123456789&apos;use strict&apos;;function attachTitle(name) &amp;#123;  return &apos;DR. &apos; + name;&amp;#125;Promise.resolve(&apos;MANHATTAN&apos;)  .then(attachTitle)  .then(consol">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-16T09:46:11.829Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="learn-promise">
+<meta name="twitter:description" content="参考资料：   npm install -g promise-it-wont-hurt exercise 8123456789&apos;use strict&apos;;function attachTitle(name) &amp;#123;  return &apos;DR. &apos; + name;&amp;#125;Promise.resolve(&apos;MANHATTAN&apos;)  .then(attachTitle)  .then(consol">
+  
+    <link rel="alternate" href="/atom.xml" title="Volibear.V" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Volibear.V</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-learn-promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/08/learn-promise/" class="article-date">
+  <time datetime="2017-03-08T07:28:08.000Z" itemprop="datePublished">2017-03-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      learn-promise
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考资料：  </p>
+<p><code>npm install -g promise-it-wont-hurt</code></p>
+<h2 id="exercise-8"><a href="#exercise-8" class="headerlink" title="exercise 8"></a>exercise 8</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="string">'use strict'</span>;</span><br><span class="line"><span class="keyword">function</span> attachTitle(name) &#123;</span><br><span class="line">  <span class="built_in">return</span> <span class="string">'DR. '</span> + name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Promise.resolve(<span class="string">'MANHATTAN'</span>)</span><br><span class="line">  .<span class="keyword">then</span>(attachTitle)</span><br><span class="line">  .<span class="keyword">then</span>(console.log);//DR.MANHATTAN</span><br></pre></td></tr></table></figure>
+<p><strong>Conclusion</strong>:<br><strong><em>promise handlers</em></strong> will wrap your returned values in promises allowing additional chaining</p>
+<h2 id="exercise-11"><a href="#exercise-11" class="headerlink" title="exercise 11"></a>exercise 11</h2><p>这是一个使用现有Promise接口来实现Promise.all的练习，以便了解其原理。 </p>
+<h3 id="MY-SOLUTION"><a href="#MY-SOLUTION" class="headerlink" title="MY SOLUTION"></a>MY SOLUTION</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> all(action1, action2) &#123;</span><br><span class="line">    var promise = new Promise(<span class="keyword">function</span>(fulfill, reject) &#123;</span><br><span class="line">        var counter = 0;</span><br><span class="line">        var str1;</span><br><span class="line">        var str2;</span><br><span class="line"></span><br><span class="line">        action1.then((result) =&gt; &#123;++counter;str1=result; &#125;);</span><br><span class="line">        action2.then((result) =&gt; &#123;++counter;str2=result; &#125;);</span><br><span class="line">        var <span class="built_in">wait</span> = () =&gt; &#123;</span><br><span class="line">            setTimeout(() =&gt; &#123;</span><br><span class="line">                <span class="keyword">if</span> (counter == 2) &#123;</span><br><span class="line">                    fulfill([str1,str2]);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="built_in">wait</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;, 300)</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="built_in">wait</span>();</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="built_in">return</span> promise;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">all(getPromise1(), getPromise2()).<span class="keyword">then</span>(console.log);</span><br></pre></td></tr></table></figure>
+<h3 id="OFFICAL-SOLUTION"><a href="#OFFICAL-SOLUTION" class="headerlink" title="OFFICAL SOLUTION"></a>OFFICAL SOLUTION</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">──────────────────</span><br><span class="line"><span class="string">'use strict'</span>;</span><br><span class="line"></span><br><span class="line">/* global getPromise1, getPromise2</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> all(a, b) &#123;</span><br><span class="line">  <span class="built_in">return</span> new Promise(<span class="keyword">function</span> (fulf</span><br><span class="line">    var counter = 0;</span><br><span class="line">    var out = [];</span><br><span class="line"></span><br><span class="line">    a.then(<span class="keyword">function</span> (val) &#123;</span><br><span class="line">      out[0] = val;</span><br><span class="line">      counter++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (counter &gt;= 2) &#123;</span><br><span class="line">        fulfill(out);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    b.then(<span class="keyword">function</span> (val) &#123;</span><br><span class="line">      out[1] = val;</span><br><span class="line">      counter++;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> (counter &gt;= 2) &#123;</span><br><span class="line">        fulfill(out);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">all(getPromise1(), getPromise2())</span><br><span class="line">  .<span class="keyword">then</span>(console.log);</span><br></pre></td></tr></table></figure>
+<p>官方答案更加优雅吧，我的答案还用上了setTimeout,当然实际使用应该会用已有的Promise.all了。</p>
+<h2 id="exercise-13-do-some-work"><a href="#exercise-13-do-some-work" class="headerlink" title="exercise 13(do some work)"></a>exercise 13(do some work)</h2><h3 id="MY-SOLUTION-1"><a href="#MY-SOLUTION-1" class="headerlink" title="MY SOLUTION"></a>MY SOLUTION</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'use strict'</span>;</span><br><span class="line"></span><br><span class="line">var http=require(<span class="string">'q-io/http'</span>);</span><br><span class="line"></span><br><span class="line">http.read(&#123;url:<span class="string">'http://localhost:7000'</span>,method:<span class="string">'GET'</span>&#125;)</span><br><span class="line">.<span class="keyword">then</span>(<span class="keyword">function</span> (result) &#123;</span><br><span class="line">	<span class="built_in">return</span> result.toString();</span><br><span class="line">&#125;).catch(console.error)</span><br><span class="line">.<span class="keyword">then</span>(<span class="keyword">function</span> (userId) &#123;</span><br><span class="line">	<span class="built_in">return</span> http.read(&#123;url:<span class="string">'http://localhost:7001/'</span>+userId,method:<span class="string">'GET'</span>&#125;)</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="keyword">then</span>(<span class="keyword">function</span> (result) &#123;</span><br><span class="line">	console.log(JSON.parse(result));</span><br><span class="line">&#125;).catch(console.error);</span><br></pre></td></tr></table></figure>
+<h3 id="OFFICIAL-SOLUTION"><a href="#OFFICIAL-SOLUTION" class="headerlink" title="OFFICIAL SOLUTION"></a>OFFICIAL SOLUTION</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var qhttp = require(<span class="string">'q-io/http'</span>);</span><br><span class="line"></span><br><span class="line">qhttp.read(<span class="string">"http://localhost:7000/"</span>)</span><br><span class="line">.<span class="keyword">then</span>(<span class="keyword">function</span> (id) &#123;</span><br><span class="line">  <span class="built_in">return</span> qhttp.read(<span class="string">"http://localhost:7001/"</span> + id);</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="keyword">then</span>(<span class="keyword">function</span> (json) &#123;</span><br><span class="line">  console.log(JSON.parse(json));</span><br><span class="line">&#125;)</span><br><span class="line">.<span class="keyword">then</span>(null, console.error)</span><br><span class="line">.<span class="keyword">done</span>();</span><br></pre></td></tr></table></figure>
+<p>大体思路上没有区别，不过我的异常处理多了一个，其实没有必要的，由于catch只能catch到被reject的promise,其他then根本不会触发，所以只需要最后一个就够了</p>
+<h4 id="理由如下：（参见之前a-importan-rule那个练习）"><a href="#理由如下：（参见之前a-importan-rule那个练习）" class="headerlink" title="理由如下：（参见之前a importan rule那个练习）"></a>理由如下：（参见之前a importan rule那个练习）</h4><p>In the code below, each expression is evaluated one after the other.  If any expression throws an exception, all subsequent expressions will not be executed and the catch block will catch and handle it.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">try &#123;</span><br><span class="line">  doStuff()</span><br><span class="line">  doMoreStuff()</span><br><span class="line">&#125; catch (err) &#123;</span><br><span class="line">  complainAboutJavascript(err);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>With promises, we can achieve a very similar control flow as shown (assume all functions return promises):</p>
+<pre><code class="bash">doStuff()
+.<span class="keyword">then</span>(doMoreStuff)
+.<span class="keyword">then</span>(null, complainAboutJavascript);
+</code></pre>
+<p>Maybe we should combine the last two lines since one is a fulfill handler and the other is a rejection handler?  NO!  While this might initially seem sensible consider what would happen if doMoreStuff threw an error.  Since the promise returned from it would be rejected, it would look for the next rejection handler to handle it.</p>
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><ul>
+<li>理解了Promise的用法和一些实现原理和思想</li>
+<li>在这个练习中学习了一个有用的npm package:<a href="https://github.com/kriskowal/q-io#response" target="_blank" rel="noopener">q-io</a><br>与基本的fs,http等package类似，可以使用q-io/fs,q-io/http等操作，但返回的形式是Promise对象</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/08/learn-promise/" data-id="cjoo060s1000zc7rsonqlrifo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/03/09/javascriptMemoryManagement/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript Memory Management
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/08/the-event-loop-in-js/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">the event-loop in js</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/前端开发/" style="font-size: 16.67px;">前端开发</a> <a href="/tags/小程序/" style="font-size: 13.33px;">小程序</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/网络基础/" style="font-size: 13.33px;">网络基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/">解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/11/beijiang/">course</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/17/canvas-article/">canvas-article</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Volibear.V<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

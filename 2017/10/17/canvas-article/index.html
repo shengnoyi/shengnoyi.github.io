@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>canvas-article | Volibear.V</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="根据微信头像和自定义的祝福语，选择好一个祝福语模板，点击确定即可进行祝福语图片的生成 主要思路 通过知晓云，存储祝福语模板的数据和图片文件，并获取微信用户的相关信息，用于后续绘制工作。 使用微信接口 wx.getImageInfo 获取网络图片的临时文件路径。 使用图片的临时文件和相关的数据信息，使用小程序的 canvas 接口进行图像绘制，绘制成功之后，使用 wx.canvasToTempFil">
+<meta name="keywords" content="小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="canvas-article">
+<meta property="og:url" content="http://yoursite.com/2017/10/17/canvas-article/index.html">
+<meta property="og:site_name" content="Volibear.V">
+<meta property="og:description" content="根据微信头像和自定义的祝福语，选择好一个祝福语模板，点击确定即可进行祝福语图片的生成 主要思路 通过知晓云，存储祝福语模板的数据和图片文件，并获取微信用户的相关信息，用于后续绘制工作。 使用微信接口 wx.getImageInfo 获取网络图片的临时文件路径。 使用图片的临时文件和相关的数据信息，使用小程序的 canvas 接口进行图像绘制，绘制成功之后，使用 wx.canvasToTempFil">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4LP9rHqevWcskS.png!/fw/800">
+<meta property="og:image" content="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4LTqiNBMBsBGxD.png!/fw/1000">
+<meta property="og:image" content="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4Lh9vxFiACUvcs.png!/fw/350">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/224/Canvas_default_grid.png">
+<meta property="og:image" content="https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-text-align.png?t=20171013">
+<meta property="og:updated_time" content="2018-11-16T09:46:11.827Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="canvas-article">
+<meta name="twitter:description" content="根据微信头像和自定义的祝福语，选择好一个祝福语模板，点击确定即可进行祝福语图片的生成 主要思路 通过知晓云，存储祝福语模板的数据和图片文件，并获取微信用户的相关信息，用于后续绘制工作。 使用微信接口 wx.getImageInfo 获取网络图片的临时文件路径。 使用图片的临时文件和相关的数据信息，使用小程序的 canvas 接口进行图像绘制，绘制成功之后，使用 wx.canvasToTempFil">
+<meta name="twitter:image" content="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4LP9rHqevWcskS.png!/fw/800">
+  
+    <link rel="alternate" href="/atom.xml" title="Volibear.V" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Volibear.V</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-canvas-article" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/17/canvas-article/" class="article-date">
+  <time datetime="2017-10-17T03:51:33.000Z" itemprop="datePublished">2017-10-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      canvas-article
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>根据微信头像和自定义的祝福语，选择好一个祝福语模板，点击确定即可进行祝福语图片的生成</p>
+<h2 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h2><ul>
+<li>通过知晓云，存储祝福语模板的数据和图片文件，并获取微信用户的相关信息，用于后续绘制工作。</li>
+<li>使用微信接口 <code>wx.getImageInfo</code> 获取网络图片的临时文件路径。</li>
+<li>使用图片的临时文件和相关的数据信息，使用小程序的 canvas 接口进行图像绘制，绘制成功之后，使用 <code>wx.canvasToTempFilePath</code> 保存 canvas 的图像至临时文件，之后可使用 <code>wx.saveImageToPhotosAlbum</code> 保存图片到手机相册中</li>
+</ul>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><h3 id="资源加载"><a href="#资源加载" class="headerlink" title="资源加载"></a>资源加载</h3><h5 id="获取微信头像和昵称"><a href="#获取微信头像和昵称" class="headerlink" title="获取微信头像和昵称"></a>获取微信头像和昵称</h5><p>  先使用 <code>wx.BaaS.login</code> 进行登录，若用户允许小程序获取用户个人信息，那么登录成功之后 <code>BaaS JS SDK</code> 会自动将用户的个人信息存储到小程序中，使用同步方法<code>wx.BaaS.storage.get(&#39;userinfo&#39;)</code> 即可获取，详见知晓云的<a href="https://doc.minapp.com/user/get-userinfo.html" target="_blank" rel="noopener">官方文档</a><br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">onLoad</span></span>() &#123;</span><br><span class="line">  <span class="built_in">let</span> userInfo = wx.BaaS.storage.get(<span class="string">'userinfo'</span>)</span><br><span class="line">  // 设置用户个人信息</span><br><span class="line">  const setUserInfo = (userInfo) =&gt; &#123;</span><br><span class="line">    <span class="built_in">let</span> &#123; nickName, avatarUrl &#125; = userInfo</span><br><span class="line">    this.setData(&#123;</span><br><span class="line">      nickName,</span><br><span class="line">      avatarUrl</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  wx.showLoading(&#123;</span><br><span class="line">    title: <span class="string">'请稍等'</span>,</span><br><span class="line">    mask: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  // 尝试获取用户信息，若获取失败，则使用 wx.BaaS.login 进行登录</span><br><span class="line">  <span class="keyword">if</span> (userInfo) &#123;</span><br><span class="line">    setUserInfo(userInfo)</span><br><span class="line"></span><br><span class="line">    // 加载祝福语模板的数据</span><br><span class="line">    this.loadWishTemplates()</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    wx.BaaS.login().<span class="keyword">then</span>(res =&gt; &#123;</span><br><span class="line">      <span class="built_in">let</span> userInfo = wx.BaaS.storage.get(<span class="string">'userinfo'</span>)</span><br><span class="line">      setUserInfo(userInfo)</span><br><span class="line"></span><br><span class="line">      // 加载祝福语模板的数据</span><br><span class="line">      this.loadWishTemplates()</span><br><span class="line">    &#125;).catch(err =&gt; console.log(err))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h5 id="获取祝福语模板信息（主要是背景图的链接）"><a href="#获取祝福语模板信息（主要是背景图的链接）" class="headerlink" title="获取祝福语模板信息（主要是背景图的链接）"></a>获取祝福语模板信息（主要是背景图的链接）</h5><p>  为了能方便地添加新的模板，我们将模板的相关数据和图片文件都存储在知晓云中<br>  <img src="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4LP9rHqevWcskS.png!/fw/800" alt="在知晓云中建立一个存放祝福语模板信息的表"></p>
+<p>  <img src="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4LTqiNBMBsBGxD.png!/fw/1000" alt="上传图片到知晓云"></p>
+<h3 id="展示效果图"><a href="#展示效果图" class="headerlink" title="展示效果图"></a>展示效果图</h3><p>由于 canvas 绘制图片需要耗费一定的时间，所以我们需要另外做一个的预览效果图，而不是直接使用 canvas 显示</p>
+<p><img src="https://cloud-minapp-3765.cloud.ifanrusercontent.com/1e4Lh9vxFiACUvcs.png!/fw/350" alt="预览效果图"></p>
+<h3 id="获取图片的临时文件用于-canvas-绘制"><a href="#获取图片的临时文件用于-canvas-绘制" class="headerlink" title="获取图片的临时文件用于 canvas 绘制"></a>获取图片的临时文件用于 canvas 绘制</h3><p>由于小程序的 canvas 接口 <code>canvasContext.drawImage</code> 并不能直接使用网络图片资源，所以我们应该将网络图片资源下载后再使用它们来进行图片绘制，相关的接口就是前面提到的 <code>wx.getImageInfo</code>, 当然，使用 <code>wx.downloadFile</code> 也能达到同样的效果</p>
+<h3 id="绘制过程"><a href="#绘制过程" class="headerlink" title="绘制过程"></a>绘制过程</h3><h5 id="canvas-的显示控制"><a href="#canvas-的显示控制" class="headerlink" title="canvas 的显示控制"></a>canvas 的显示控制</h5><p>在第 2 步的时候没有直接使用 canvas 组件去做效果预览，为了页面的美观，将暂时用不到的 canvas 组件隐藏起来了。<br>由于小程序的 canvas 比较特别，当它在页面上不可见时，无法正常进行使用，也就是说，我们不能像平时在浏览器开发时设置 canvas 的 css 属性为 <code>display:none</code> 或者 <code>visibility:hidden</code>。<br>所以，在我们按下确定按钮，开始进行生成祝福语时, 做了如下处理：<br>调用微信接口 <code>wx.showloading(object)</code> 提示用户等待，并且设置 <code>wx.showloading(object)</code> 的参数 <code>object.mask = true</code>,使得用户在图片生成动作完成之前无法操作页面。<br>这时，小程序就偷偷地把 canvas 组件显示在用户看不到的页面下面，进行绘制过程。<br>在绘制过程完成之后，我们又会把 canvas 组件藏起来。</p>
+<figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">handleConfirm</span></span>() &#123;</span><br><span class="line">  wx.showLoading(&#123;</span><br><span class="line">    title: <span class="string">'正在生成图片'</span>,</span><br><span class="line">    mask: <span class="literal">true</span>,</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  this.showCanvas()</span><br><span class="line"></span><br><span class="line">  this.generateWishesImage().<span class="keyword">then</span>((res) =&gt; &#123;</span><br><span class="line">    wx.hideLoading()</span><br><span class="line">  &#125;).catch(err =&gt; &#123;</span><br><span class="line">    console.log(err)</span><br><span class="line">    wx.hideLoading()</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<h5 id="网络资源加载"><a href="#网络资源加载" class="headerlink" title="网络资源加载"></a>网络资源加载</h5><p>由于小程序的 canvas 无法直接使用网络图片进行绘制，所以当我们需要使用一个图片资源时，应该先使用 <code>wx.getImageInfo</code> 去获取该资源的临时文件。<br>这里分享一个小技巧吧，笔者上传的图片没有压缩，所以调用 <code>wx.getImageInfo</code> 加载图片还是比较久的，怎么提高加载速度又不用每次上传都手动去压缩图片呢？答案就是使用知晓云的图片云处理功能，使用给图片资源加上特定的后缀，可以利用图片云处理功能获得合适大小的图片，附上更详细的使用方法–<a href="http://support.minapp.com/hc/kb/article/1082737/" target="_blank" rel="noopener">图片云处理</a><br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">loadResources</span></span>() &#123;</span><br><span class="line">  const &#123; bgWishes, avatarUrl &#125; = this.data</span><br><span class="line">  const getImageInfo = (src) =&gt; &#123;</span><br><span class="line">    <span class="built_in">return</span> new Promise((fulfill, reject) =&gt; &#123;</span><br><span class="line">      wx.getImageInfo(&#123;</span><br><span class="line">        src,</span><br><span class="line">        success(&#123; width, height, path &#125;) &#123;</span><br><span class="line">          fulfill(path)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="function"><span class="title">fail</span></span>() &#123;</span><br><span class="line">          reject(`获取图片失败:<span class="variable">$&#123;src&#125;</span>`)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 存在知晓云服务器上的图片，可使用知晓云的图片云处理功能，提高加载速度</span><br><span class="line">  const getZippedImage = (&#123; width = 300, src &#125;) =&gt; &#123;</span><br><span class="line">    <span class="built_in">return</span> `<span class="variable">$&#123;src&#125;</span>!/fw/<span class="variable">$&#123;width&#125;</span>`</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // 一次性加载所有图片资源获取</span><br><span class="line">  <span class="built_in">let</span> promises = [getImageInfo(getZippedImage(&#123; src: bgWishes &#125;)), getImageInfo(avatarUrl)]</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> Promise.all(promises).<span class="keyword">then</span>(values =&gt; &#123;</span><br><span class="line">    <span class="built_in">return</span> &#123;</span><br><span class="line">      bgWishes: values[0],</span><br><span class="line">      avatarUrl: values[1],</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></p>
+<h5 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h5><p>完成上一步的资源加载之后，我们终于可以开始画画了，使用 canvas 进行图片绘制，使用过 HTML5 的 canvas API 的同学应该都很熟悉吧。<br>值得一说的是 canvas 中的距离单位为 px, 附上坐标系示意图：<br><img src="https://mdn.mozillademos.org/files/224/Canvas_default_grid.png" alt="canvas 的坐标系"><br>绘制的过程，调用 <code>wx.createCanvasContent(canvasID)</code> 获取画布的上下文 ctx，依次完成绘制背景、祝福语的内容、微信用户头像和昵称、祝福人数等信息的逻辑，本文的 demo 主要是做了绘制图片和绘制文字两个工作。</p>
+<h6 id="绘制图片"><a href="#绘制图片" class="headerlink" title="绘制图片"></a>绘制图片</h6><p>调用 <code>ctx.drawImage(resources, x, y, width, height)</code>即可，<code>resource</code> 需要使用我们之前获得的临时文件路径。</p>
+<h6 id="绘制文字"><a href="#绘制文字" class="headerlink" title="绘制文字"></a>绘制文字</h6><p>这个比绘制图片稍微复杂一些，比如绘制祝福语的内容时，用户可能输入很长的字符串，为了美观，我们需要按照一定规则将它们分组换行。<br>在本文的示例代码中，为了方便演示，我使用了比较简单的规则，每十六个字符为一行，有兴趣的读者可以考虑自己丰富这一块的逻辑，考虑中英文、符号等特殊情况。<br>确定好要绘制的单行文本之后，使用 <code>wx.setFontSize</code> 和 <code>wx.setTextAlign</code> 分别设置字体大小和字体对齐方式，关于接口 <code>ctx.setTextAlign</code> 的使用，请参考示意图：<br><img src="https://mp.weixin.qq.com/debug/wxadoc/dev/image/canvas/set-text-align.png?t=20171013" alt="canvasContext.setTextAlign 示意"><br>附上 demo 绘制逻辑的代码：<br><figure class="highlight bash"><figcaption><span>javascript</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">drawImage(&#123; resources &#125;) &#123;</span><br><span class="line">  const ctx = wx.createCanvasContext(<span class="string">'myCanvas'</span>)</span><br><span class="line">  const &#123; bgWishes, avatarUrl &#125; = resources</span><br><span class="line">  const &#123; nickName, count, wishesContent &#125; = this.data</span><br><span class="line">  const CANVAS_W = 300</span><br><span class="line">  const CANVAS_H = 375</span><br><span class="line"></span><br><span class="line">  // draw background</span><br><span class="line">  ctx.drawImage(bgWishes, 0, 0, CANVAS_W, CANVAS_H)</span><br><span class="line"></span><br><span class="line">  // draw wishes content</span><br><span class="line">  const getWishBlocks = (content = <span class="string">''</span>) =&gt; &#123;</span><br><span class="line">    <span class="built_in">let</span> result = []</span><br><span class="line">    <span class="keyword">if</span> (typeof content === <span class="string">'string'</span>) &#123;</span><br><span class="line">      // 将文字简单分行，每十六个字符为一行</span><br><span class="line">      const COUNT_PER_BLOCK = 16</span><br><span class="line">      <span class="keyword">for</span> (<span class="built_in">let</span> offset = 0, l = content.length; offset &lt; l;) &#123;</span><br><span class="line">        <span class="built_in">let</span> start = offset</span><br><span class="line">        <span class="built_in">let</span> end = offset + COUNT_PER_BLOCK</span><br><span class="line">        <span class="built_in">let</span> block = content.substring(start, end)</span><br><span class="line">        result.push(block)</span><br><span class="line">        offset += COUNT_PER_BLOCK</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">return</span> result</span><br><span class="line">  &#125;</span><br><span class="line">  const WISHES_X = CANVAS_W / 2</span><br><span class="line">  const WISHES_Y = 90</span><br><span class="line">  const WISHES_LIGHT_HEIGHT = 21</span><br><span class="line">  ctx.setTextAlign(<span class="string">'center'</span>)</span><br><span class="line">  ctx.setFontSize(15)</span><br><span class="line">  <span class="built_in">let</span> wishesContentBlocks = getWishBlocks(wishesContent)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="built_in">let</span> i = 0, l = wishesContentBlocks.length; i &lt; l; i++) &#123;</span><br><span class="line">    <span class="built_in">let</span> x = WISHES_X</span><br><span class="line">    <span class="built_in">let</span> y = WISHES_Y + WISHES_LIGHT_HEIGHT * i</span><br><span class="line">    ctx.fillText(wishesContentBlocks[i], x, y)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // draw userInfo</span><br><span class="line">  //draw avatar</span><br><span class="line">  const AVATAR_X = CANVAS_W - 5 - 53</span><br><span class="line">  const AVATAR_Y = CANVAS_H - 104 - 15</span><br><span class="line">  const AVATAR_SIZE = 53</span><br><span class="line">  ctx.drawImage(avatarUrl, AVATAR_X, AVATAR_Y, 53, 53)</span><br><span class="line">  // draw avatar border</span><br><span class="line"></span><br><span class="line">  // draw nickname</span><br><span class="line">  const NICKNAME_X = CANVAS_W - 5</span><br><span class="line">  const NICKNAME_Y = CANVAS_H - 20 - 5 - 15</span><br><span class="line">  ctx.setTextAlign(<span class="string">'right'</span>)</span><br><span class="line">  ctx.setFontSize(15)</span><br><span class="line">  ctx.fillText(nickName, NICKNAME_X, NICKNAME_Y)</span><br><span class="line"></span><br><span class="line">  // draw wishes count</span><br><span class="line">  const COUNT_X = NICKNAME_X</span><br><span class="line">  const COUNT_Y = CANVAS_H - 15</span><br><span class="line">  ctx.setTextAlign(<span class="string">'right'</span>)</span><br><span class="line">  ctx.setFontSize(13)</span><br><span class="line">  ctx.fillText(`第<span class="variable">$&#123;count&#125;</span>位送出祝福`, COUNT_X, COUNT_Y)</span><br><span class="line"></span><br><span class="line">  ctx.draw()</span><br><span class="line"></span><br><span class="line">  <span class="built_in">return</span> ctx</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="保存"><a href="#保存" class="headerlink" title="保存"></a>保存</h3><p>在完成绘制过程之后，我们需要将 canvas 中辛辛苦苦绘制的图像保存下来。<br>调用 <a href="https://mp.weixin.qq.com/debug/wxadoc/dev/api/canvas/temp-file.html" target="_blank" rel="noopener"><code>wx.canvasToTempFilePath(OBJECT)</code></a>，可以获得图像的临时文件路径，这时，我们使用该路径，就可以把它显示在 <code>&lt;image/&gt;</code> 标签中了。<br>如果需要把图片保存下来，可以调用 <code>wx.saveImageToPhotosAlbum(OBJECT)</code>, 把临时文件保存到手机相册中。</p>
+<p>##<br>好了，关于如何使用 canvas 绘制祝福语图片的教程就到此结束了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/10/17/canvas-article/" data-id="cjoo060rf0008c7rslvunegs6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/11/11/beijiang/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          course
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/09/15/frontend-testing/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Frontend Testing</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue/">Vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端开发/">前端开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Javascript/" style="font-size: 20px;">Javascript</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/Windows/" style="font-size: 10px;">Windows</a> <a href="/tags/前端开发/" style="font-size: 16.67px;">前端开发</a> <a href="/tags/小程序/" style="font-size: 13.33px;">小程序</a> <a href="/tags/数据结构/" style="font-size: 10px;">数据结构</a> <a href="/tags/网络基础/" style="font-size: 13.33px;">网络基础</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">November 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/04/install-global-package-failed-with-yarn-in-ubuntu/">解决在 Ubuntu 下使用 yarn 安装全局依赖不成功的问题</a>
+          </li>
+        
+          <li>
+            <a href="/2017/11/11/beijiang/">course</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/17/canvas-article/">canvas-article</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Volibear.V<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
