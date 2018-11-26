@@ -62,6 +62,90 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-type-of-null" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/08/type-of-null/" class="article-date">
+  <time datetime="2017-05-08T06:56:58.000Z" itemprop="datePublished">2017-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/type-of-null/">typeof null</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天翻看typeof的<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof" target="_blank" rel="noopener">文档</a>，发现<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof null === <span class="string">''</span>;//<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>跟着索引，发现了一个有趣的小故事:<a href="http://2ality.com/2013/10/typeof-null.html" target="_blank" rel="noopener">the history of “typeof null”</a>,原来，这是JavaScript实现的bug，事实上，typeof null应该等于’null’，但是在es6上关于修复这个bug的提议已被否决了，因为修复后可能造成现有代码奔溃。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/08/type-of-null/" data-id="cjoxzk1dv001f5xrs5h6790fn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-when-to-catch-and-when-to-throw-exception" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/08/when-to-catch-and-when-to-throw-exception/" class="article-date">
+  <time datetime="2017-05-08T02:25:15.000Z" itemprop="datePublished">2017-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/08/when-to-catch-and-when-to-throw-exception/">when to catch and when to throw exception</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考资料：<a href="http://stackoverflow.com/questions/18679090/when-to-catch-the-exception-vs-when-to-throw-the-exceptions" target="_blank" rel="noopener">When to catch the Exception vs When to throw the Exceptions?</a></p>
+<blockquote>
+<p>You should catch the exception when you are in the method that knows what to do.</p>
+</blockquote>
+<p>就是说，一个异常应该在哪里被捕获，应该取决于被捕获的地方是否能知道怎么处理这个异常，否则就应该被抛出到更上层去处理。</p>
+<p>当然，我想知道的是，是不是所有的异常都应该被捕获和处理，应该可能出错的情况太多了，是否都值得去处理，或者某些异常就是应该只是被抛出而已。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/05/08/when-to-catch-and-when-to-throw-exception/" data-id="cjoxzk1dx001h5xrs84fs9j4a" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-learnWebpack" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/05/04/learnWebpack/" class="article-date">
@@ -93,7 +177,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/05/04/learnWebpack/" data-id="cjoo060s60013c7rsfsrtgqvn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/05/04/learnWebpack/" data-id="cjoxzk1dk00135xrsdukqns9p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
@@ -136,7 +220,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/11/read-the-source-of-Vue-js/" data-id="cjoo060sc001bc7rsmb62hk1e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/11/read-the-source-of-Vue-js/" data-id="cjoxzk1do00195xrs5x8n0lfq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/04/05/frontend-tools-study/" data-id="cjoo060rt000lc7rs26hg0u66" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/04/05/frontend-tools-study/" data-id="cjoxzk1d4000g5xrs52zzpykx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
@@ -220,7 +304,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/31/install-node-sass/" data-id="cjoo060s80015c7rsgoyholgl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/31/install-node-sass/" data-id="cjoxzk1dd000s5xrsqvgv10e8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/">Vue</a></li></ul>
@@ -261,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/31/flex-layout/" data-id="cjoo060rq000gc7rs4uq73flx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/31/flex-layout/" data-id="cjoxzk1d0000d5xrsn6nd08jr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
@@ -328,7 +412,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/23/callback-hell/" data-id="cjoo060rc0004c7rsftkrnqvt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/23/callback-hell/" data-id="cjoxzk1cu00055xrsrb3w9nq7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -402,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/23/commuication-between-browser-and-server/" data-id="cjoo060rl000bc7rskbnsdyqd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/23/commuication-between-browser-and-server/" data-id="cjoxzk1cx00095xrsvtwd9rfr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
@@ -464,113 +548,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/17/wechatProgramNote/" data-id="cjoo060sj001kc7rsjz51m1f5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/03/17/wechatProgramNote/" data-id="cjoxzk1e0001l5xrsj51qjj6g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-some-features-about-es6" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/14/some-features-about-es6/" class="article-date">
-  <time datetime="2017-03-14T02:10:39.000Z" itemprop="datePublished">2017-03-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/14/some-features-about-es6/">some features about es6</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="模板字符串-tagged-template-strings"><a href="#模板字符串-tagged-template-strings" class="headerlink" title="模板字符串 (tagged template strings)"></a>模板字符串 (tagged template strings)</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings" target="_blank" rel="noopener">tagged template strings</a><br>用<code></code>可以把字符串保存起来，保留其格式，而且使用${}能在里面执行js语法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var user=<span class="string">'banana'</span>;</span><br><span class="line">var str=`this is a <span class="variable">$&#123;user&#125;</span>`;//this is a banana</span><br></pre></td></tr></table></figure></p>
-<h3 id="箭头函数-arrow-function"><a href="#箭头函数-arrow-function" class="headerlink" title="箭头函数 (arrow function)"></a>箭头函数 (arrow function)</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions" target="_blank" rel="noopener">MDN:arrow function</a></p>
-<h5 id="箭头函数的this指针"><a href="#箭头函数的this指针" class="headerlink" title="箭头函数的this指针"></a>箭头函数的this指针</h5><p>修复了一个JavaScript的设计错误<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;</span><br><span class="line">	msg:<span class="string">'hello world'</span>,</span><br><span class="line">	<span class="built_in">test</span>:<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		console.log(this.msg);//<span class="string">'hello world'</span></span><br><span class="line">		<span class="built_in">return</span> <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			console.log(this.msg)//undefined</span><br><span class="line">		&#125;		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>在箭头函数中使用则不会出现这种情况<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var obj=&#123;</span><br><span class="line">	msg: <span class="string">'hello world'</span>,</span><br><span class="line">	<span class="built_in">test</span>: <span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span> ()=&gt;&#123;console.log(this.msg)&#125;;//<span class="string">'hello world'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="解构赋值-destructuring-assignment"><a href="#解构赋值-destructuring-assignment" class="headerlink" title="解构赋值 (destructuring assignment)"></a>解构赋值 (destructuring assignment)</h3><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="_blank" rel="noopener">MDN:destructuring assignment</a><br>比较有意思和有用的部分，可以参见上面的文档链接。<br>可以用于数组或者对象</p>
-<h3 id="Spread-syntax"><a href="#Spread-syntax" class="headerlink" title="Spread syntax"></a>Spread syntax</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator" target="_blank" rel="noopener">Spread syntax</a><br>In ES6, you can use the …args syntax to “spread” an array out when calling such a function. For ex<br>ample:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var numbers = [1, 1, 2, 3, 5, 8];</span><br><span class="line">var max = Math.max(...numbers);//8</span><br></pre></td></tr></table></figure></p>
-<h3 id="Rest-parameters"><a href="#Rest-parameters" class="headerlink" title="Rest parameters"></a>Rest parameters</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters" target="_blank" rel="noopener">Rest parameters</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span>(a, b, ...theArgs) &#123;</span><br><span class="line">  // <span class="keyword">do</span> some thing</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="参数默认值"><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h3><p>es6中参数可以设置默认值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">function</span> sayHello(greeting = <span class="string">"Hello"</span>, name = <span class="string">"CampJS"</span>) &#123;</span><br><span class="line">    console.log(`<span class="variable">$&#123;greeting&#125;</span> <span class="variable">$&#123;name&#125;</span>!`);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/14/some-features-about-es6/" data-id="cjoo060sd001dc7rs6n9jlubf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Some-front-end-inteview-question" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/03/13/Some-front-end-inteview-question/" class="article-date">
-  <time datetime="2017-03-13T09:20:56.000Z" itemprop="datePublished">2017-03-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/Some-front-end-inteview-question/">Solution for some front end inteview question</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考资料：<br><a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions#html-questions" target="_blank" rel="noopener">Front-end-Developer-Interview-Questions</a></p>
-<h3 id="HTML-Questions"><a href="#HTML-Questions" class="headerlink" title="HTML Questions:"></a>HTML Questions:</h3><ul>
-<li>What does a doctype do?</li>
-<li>What’s the difference between full standards mode, almost standards mode and quirks mode?</li>
-<li>What’s the difference between HTML and XHTML?</li>
-<li>Are there any problems with serving pages as application/xhtml+xml?</li>
-<li>How do you serve a page with content in multiple languages?</li>
-<li>What kind of things must you be wary of when design or developing for multilingual sites?</li>
-<li>What are data- attributes good for?</li>
-<li>Consider HTML5 as an open web platform. What are the building blocks of HTML5?</li>
-<li>Describe the difference between a cookie, sessionStorage and localStorage.</li>
-<li>Describe the difference between <code>&lt;script&gt;</code>, <code>&lt;script async&gt;</code> and <code>&lt;script defer&gt;</code>.<ul>
-<li><code>&lt;script&gt;</code> stops rendering process, and download and run a script.</li>
-<li><code>&lt;script async&gt;</code> don’t stop rendering process while asynchronously downloading a script. When finishing download, it stops rendering and runs the script.</li>
-<li><code>&lt;script defer&gt;</code> don’t stop rendering process while asynchronously downloading a script. When finishing rendering, it runs the script.</li>
-</ul>
-</li>
-<li>Why is it generally a good idea to position CSS <code>&lt;link&gt;</code>s between <code>&lt;head&gt;&lt;/head&gt;</code> and JS <code>&lt;script&gt;</code>s just before <code>&lt;/body&gt;</code>? Do you know any exceptions?</li>
-<li>What is progressive rendering?</li>
-<li>Have you used different HTML templating languages before?</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/03/13/Some-front-end-inteview-question/" data-id="cjoo060r70001c7rst540n1ju" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端开发/">前端开发</a></li></ul>
 
     </footer>
   </div>
@@ -627,6 +608,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/21/get-started-in-learning-redux/">get-started-in-learning-redux</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/19/typescript-react-starter/">typescript-react-starter</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
           </li>
         
@@ -636,14 +625,6 @@
         
           <li>
             <a href="/2017/11/11/beijiang/">course</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/17/canvas-article/">canvas-article</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
           </li>
         
       </ul>

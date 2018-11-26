@@ -62,6 +62,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-SHA1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/02/SHA1/" class="article-date">
+  <time datetime="2017-03-02T10:11:19.000Z" itemprop="datePublished">2017-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/02/SHA1/">SHA1算法的猜想</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SHA1算法的猜想"><a href="#SHA1算法的猜想" class="headerlink" title="SHA1算法的猜想"></a>SHA1算法的猜想</h2><p>参考资料：<a href="https://www.zhihu.com/question/56234281" target="_blank" rel="noopener">如何评价 2 月 23 日谷歌宣布实现了 SHA-1 碰撞？</a><br>原本一直以为是使用SHA1算法对密码进行加密，这样hacker即使获得了密文，也没有办法进行破解，但在看了这个文章后发现我是错的</p>
+<h3 id="SHA1的正确用法猜想"><a href="#SHA1的正确用法猜想" class="headerlink" title="SHA1的正确用法猜想"></a>SHA1的正确用法猜想</h3><p>以用户的注册和登录为例，在注册的时候，客户端发送明文密码，服务器使用SHA1算法生成一个数据摘要b，并存储在数据库中。当需要登录的时候，客户端发送一个密码过来，服务器再次调用SHA1密码，生成另一个数据摘要b1,比对b1和b是否一致，如果一致则说明密码是正确的。</p>
+<h3 id="在服务端加密"><a href="#在服务端加密" class="headerlink" title="在服务端加密"></a>在服务端加密</h3><p>如果服务器被人攻击了，密码数据丢失，但是由于存储的只是摘要，而通过摘要是没有办法（在SHA1没有被破解之前）反向得到原文的，那么hacker仍没有办法获取用户的其他数据，</p>
+<h3 id="在客户端加密"><a href="#在客户端加密" class="headerlink" title="在客户端加密"></a>在客户端加密</h3><p>如果是在客户端进行加密，加密后把密文发到服务器直接比对是否一致，这样如果服务器被攻陷了，那么密码也被丢失了，跟明文存储没有区别了，这样使用SHA1算法就没有意义了。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/03/02/SHA1/" data-id="cjoxzk1cn00015xrseuqakgk9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络基础/">网络基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-my-core" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/20/my-core/" class="article-date">
+  <time datetime="2017-02-20T15:29:49.000Z" itemprop="datePublished">2017-02-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/20/my-core/">my core</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h3><p>Q:vue-router用的是哪种模式？histroy or hash?</p>
+<p>Q:js基础不太好？JavaScript权威指南，JavaScript高级程序设计</p>
+<p>Q:适配方案？如何适配全分辨率？</p>
+<p>Q:event bus</p>
+<p>Q:bubble?</p>
+<h3 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/02/20/my-core/" data-id="cjoxzk1dl00155xrscdh3ekxj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-TheGoodPartInJavascript" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/20/TheGoodPartInJavascript/" class="article-date">
@@ -110,7 +195,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/02/20/TheGoodPartInJavascript/" data-id="cjoo060rb0003c7rsadbm2rbe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/02/20/TheGoodPartInJavascript/" data-id="cjoxzk1cv00085xrscvb8sfxh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript/">Javascript</a></li></ul>
@@ -170,6 +255,14 @@
       <ul>
         
           <li>
+            <a href="/2018/11/21/get-started-in-learning-redux/">get-started-in-learning-redux</a>
+          </li>
+        
+          <li>
+            <a href="/2018/11/19/typescript-react-starter/">typescript-react-starter</a>
+          </li>
+        
+          <li>
             <a href="/2018/11/16/get-started-learning-typescript/">get-started-learning-typescript</a>
           </li>
         
@@ -179,14 +272,6 @@
         
           <li>
             <a href="/2017/11/11/beijiang/">course</a>
-          </li>
-        
-          <li>
-            <a href="/2017/10/17/canvas-article/">canvas-article</a>
-          </li>
-        
-          <li>
-            <a href="/2017/09/15/frontend-testing/">Frontend Testing</a>
           </li>
         
       </ul>
